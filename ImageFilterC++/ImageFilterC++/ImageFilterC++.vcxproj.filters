@@ -1,0 +1,168 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="stdafx.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageFilter\IImageFilter.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageFilter\InvertFilter.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageFilter\Image.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageFilter\AutoAdjustFilter.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageFilter\AutoLevelFilter.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageFilter\RadialDistortionFilter.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageFilter\BannerFilter.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageFilter\BigBrotherFilter.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageFilter\BlackWhiteFilter.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageFilter\BlockPrintFilter.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageFilter\ColorQuantizeFilter.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageFilter\ConvolutionFilter.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageFilter\BrickFilter.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageFilter\ParamEdgeDetectFilter.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageFilter\ImageBlender.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageFilter\EdgeFilter.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageFilter\FeatherFilter.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageFilter\GaussianBlurFilter.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageFilter\GradientFilter.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageFilter\GradientMapFilter.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageFilter\HistogramEqualFilter.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageFilter\LightFilter.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageFilter\MistFilter.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageFilter\NoiseFilter.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageFilter\MonitorFilter.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageFilter\MosaicFilter.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageFilter\NeonFilter.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageFilter\VignetteFilter.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageFilter\NightVisionFilter.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageFilter\OilPaintFilter.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageFilter\OldPhotoFilter.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageFilter\PixelateFilter.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageFilter\RainBowFilter.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageFilter\RectMatrixFilter.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageFilter\ReflectionFilter.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageFilter\ReliefFilter.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageFilter\SaturationModifyFilter.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageFilter\SepiaFilter.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageFilter\SmashColorFilter.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageFilter\ThresholdFilter.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageFilter\TintFilter.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageFilter\VintageFilter.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageFilter\XRadiationFilter.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageFilter\WaterWaveFilter.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="ImageFilterC++.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,135 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{D1F98950-76A6-437E-9291-454B87A3E587}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>ImageFilterC</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions);</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <None Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="ImageFilter\AutoAdjustFilter.h" />
+    <ClInclude Include="ImageFilter\AutoLevelFilter.h" />
+    <ClInclude Include="ImageFilter\BannerFilter.h" />
+    <ClInclude Include="ImageFilter\BigBrotherFilter.h" />
+    <ClInclude Include="ImageFilter\BlackWhiteFilter.h" />
+    <ClInclude Include="ImageFilter\BlockPrintFilter.h" />
+    <ClInclude Include="ImageFilter\BrickFilter.h" />
+    <ClInclude Include="ImageFilter\ColorQuantizeFilter.h" />
+    <ClInclude Include="ImageFilter\ConvolutionFilter.h" />
+    <ClInclude Include="ImageFilter\EdgeFilter.h" />
+    <ClInclude Include="ImageFilter\FeatherFilter.h" />
+    <ClInclude Include="ImageFilter\GaussianBlurFilter.h" />
+    <ClInclude Include="ImageFilter\GradientFilter.h" />
+    <ClInclude Include="ImageFilter\GradientMapFilter.h" />
+    <ClInclude Include="ImageFilter\HistogramEqualFilter.h" />
+    <ClInclude Include="ImageFilter\IImageFilter.h" />
+    <ClInclude Include="ImageFilter\Image.h" />
+    <ClInclude Include="ImageFilter\ImageBlender.h" />
+    <ClInclude Include="ImageFilter\InvertFilter.h" />
+    <ClInclude Include="ImageFilter\LightFilter.h" />
+    <ClInclude Include="ImageFilter\MistFilter.h" />
+    <ClInclude Include="ImageFilter\MonitorFilter.h" />
+    <ClInclude Include="ImageFilter\MosaicFilter.h" />
+    <ClInclude Include="ImageFilter\NeonFilter.h" />
+    <ClInclude Include="ImageFilter\NightVisionFilter.h" />
+    <ClInclude Include="ImageFilter\NoiseFilter.h" />
+    <ClInclude Include="ImageFilter\OilPaintFilter.h" />
+    <ClInclude Include="ImageFilter\OldPhotoFilter.h" />
+    <ClInclude Include="ImageFilter\ParamEdgeDetectFilter.h" />
+    <ClInclude Include="ImageFilter\PixelateFilter.h" />
+    <ClInclude Include="ImageFilter\RadialDistortionFilter.h" />
+    <ClInclude Include="ImageFilter\RainBowFilter.h" />
+    <ClInclude Include="ImageFilter\RectMatrixFilter.h" />
+    <ClInclude Include="ImageFilter\ReflectionFilter.h" />
+    <ClInclude Include="ImageFilter\ReliefFilter.h" />
+    <ClInclude Include="ImageFilter\SaturationModifyFilter.h" />
+    <ClInclude Include="ImageFilter\SepiaFilter.h" />
+    <ClInclude Include="ImageFilter\SmashColorFilter.h" />
+    <ClInclude Include="ImageFilter\ThresholdFilter.h" />
+    <ClInclude Include="ImageFilter\TintFilter.h" />
+    <ClInclude Include="ImageFilter\VignetteFilter.h" />
+    <ClInclude Include="ImageFilter\VintageFilter.h" />
+    <ClInclude Include="ImageFilter\WaterWaveFilter.h" />
+    <ClInclude Include="ImageFilter\XRadiationFilter.h" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="targetver.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="ImageFilterC++.cpp" />
+    <ClCompile Include="stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+    </ClCompile>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
