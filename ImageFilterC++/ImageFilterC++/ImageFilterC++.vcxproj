@@ -45,7 +45,7 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
-      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -82,6 +82,7 @@
     <ClInclude Include="ImageFilter\BlackWhiteFilter.h" />
     <ClInclude Include="ImageFilter\BlockPrintFilter.h" />
     <ClInclude Include="ImageFilter\BrickFilter.h" />
+    <ClInclude Include="ImageFilter\BrightContrastFilter.h" />
     <ClInclude Include="ImageFilter\ColorQuantizeFilter.h" />
     <ClInclude Include="ImageFilter\ConvolutionFilter.h" />
     <ClInclude Include="ImageFilter\EdgeFilter.h" />
@@ -95,6 +96,7 @@
     <ClInclude Include="ImageFilter\ImageBlender.h" />
     <ClInclude Include="ImageFilter\InvertFilter.h" />
     <ClInclude Include="ImageFilter\LightFilter.h" />
+    <ClInclude Include="ImageFilter\LomoFilter.h" />
     <ClInclude Include="ImageFilter\MistFilter.h" />
     <ClInclude Include="ImageFilter\MonitorFilter.h" />
     <ClInclude Include="ImageFilter\MosaicFilter.h" />

@@ -156,6 +156,12 @@
     <ClInclude Include="ImageFilter\WaterWaveFilter.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="ImageFilter\LomoFilter.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageFilter\BrightContrastFilter.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">

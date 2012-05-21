@@ -211,7 +211,7 @@ public:
 		    }
         }
 #ifndef WIN32 //only for apple ios
-		clone.copyPixelsFromBuffer();
+		imageIn.copyPixelsFromBuffer();
 #endif
 	    return source1;
 	}

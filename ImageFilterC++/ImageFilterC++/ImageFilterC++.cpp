@@ -10,6 +10,7 @@
 
 #include <algorithm>
 //#include "Image.h"
+//v0.1
 #include "ImageFilter\InvertFilter.h"
 #include "ImageFilter\AutoLevelFilter.h"
 #include "ImageFilter\RadialDistortionFilter.h"
@@ -49,7 +50,8 @@
 #include "ImageFilter\WaterWaveFilter.h"
 #include "ImageFilter\XRadiationFilter.h"
 
-
+//v0.2
+#include "ImageFilter\LomoFilter.h"
 
 using namespace std;
 using namespace HaoRan_ImageFilter;
@@ -102,11 +104,11 @@ vector<IImageFilter*> LoadFilterVector(){
 	//vectorFilter.push_back(new SmashColorFilter());
 	//vectorFilter.push_back(new ThresholdFilter());
 	//vectorFilter.push_back(new TintFilter());
-	vectorFilter.push_back(new VignetteFilter());
+	//vectorFilter.push_back(new VignetteFilter());
 	//vectorFilter.push_back(new VintageFilter());
 	//vectorFilter.push_back(new WaterWaveFilter());
 	//vectorFilter.push_back(new XRadiationFilter());
-	
+	vectorFilter.push_back(new LomoFilter());
 	return vectorFilter;
 }
 
