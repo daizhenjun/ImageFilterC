@@ -197,11 +197,62 @@ public:
     static Gradient Inverse()
     {
         vector<int> colors(2);
-        colors[1] = ::White;
-        colors[2] = ::Black;
+        colors[0] = ::White;
+        colors[1] = ::Black;
         Gradient gradient(colors);
         return gradient;
     }
+
+	static Gradient Fade()
+    {
+        vector<int> colors(3);
+        colors[0] = ::Black;
+        colors[1] = 0xFFEEE8CD;//Cornsilk2  , reference http://www.wescn.com/tool/color_3.html
+        colors[2] = ::Black;
+		Gradient gradient(colors);
+        return gradient;
+    }
+
+    static Gradient Scene()
+    {
+		vector<int> colors(3);
+        colors[0] = 0xFFFFD700;//Gold  , reference http://www.wescn.com/tool/color_3.html
+        colors[1] = ::White;
+		colors[2] = 0xFFFFD700;//Gold  , reference http://www.wescn.com/tool/color_3.html
+		Gradient gradient(colors);
+        return gradient;
+	}
+
+    static Gradient Scene1()
+    {
+		vector<int> colors(3);
+        colors[0] = 0xFF6495ED;//CornflowerBlue  , reference http://www.wescn.com/tool/color_3.html
+        colors[1] = ::White;
+		colors[2] = 0xFF6495ED;//CornflowerBlue  , reference http://www.wescn.com/tool/color_3.html
+		Gradient gradient(colors);
+        return gradient;
+	}
+       
+    static Gradient Scene2()
+    {
+		vector<int> colors(3);
+        colors[0] = 0xFF00BFFF;//DeepSkyBlue  , reference http://www.wescn.com/tool/color_3.html
+        colors[1] = 0xFFDCDCDC;//Gainsboro
+		colors[2] = 0xFF00BFFF;//DeepSkyBlue  , reference http://www.wescn.com/tool/color_3.html
+		Gradient gradient(colors);
+        return gradient;
+	}
+
+    static Gradient Scene3()
+    {
+		vector<int> colors(3);
+        colors[0] = 0xFFFFA500;//Orange  , reference http://www.wescn.com/tool/color_3.html
+		colors[1] = ::White;//
+		colors[2] = 0xFFFFA500;//Orange  , reference http://www.wescn.com/tool/color_3.html
+		Gradient gradient(colors);
+        return gradient;
+    }
+
 };
 
 class GradientFilter : public IImageFilter{

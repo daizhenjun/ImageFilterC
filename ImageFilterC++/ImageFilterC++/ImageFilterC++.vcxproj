@@ -83,10 +83,14 @@
     <ClInclude Include="ImageFilter\BlockPrintFilter.h" />
     <ClInclude Include="ImageFilter\BrickFilter.h" />
     <ClInclude Include="ImageFilter\BrightContrastFilter.h" />
+    <ClInclude Include="ImageFilter\CleanGlassFilter.h" />
     <ClInclude Include="ImageFilter\ColorQuantizeFilter.h" />
+    <ClInclude Include="ImageFilter\ComicFilter.h" />
     <ClInclude Include="ImageFilter\ConvolutionFilter.h" />
     <ClInclude Include="ImageFilter\EdgeFilter.h" />
     <ClInclude Include="ImageFilter\FeatherFilter.h" />
+    <ClInclude Include="ImageFilter\FilmFilter.h" />
+    <ClInclude Include="ImageFilter\FocusFilter.h" />
     <ClInclude Include="ImageFilter\GaussianBlurFilter.h" />
     <ClInclude Include="ImageFilter\GradientFilter.h" />
     <ClInclude Include="ImageFilter\GradientMapFilter.h" />
@@ -105,6 +109,7 @@
     <ClInclude Include="ImageFilter\NoiseFilter.h" />
     <ClInclude Include="ImageFilter\OilPaintFilter.h" />
     <ClInclude Include="ImageFilter\OldPhotoFilter.h" />
+    <ClInclude Include="ImageFilter\PaintBorderFilter.h" />
     <ClInclude Include="ImageFilter\ParamEdgeDetectFilter.h" />
     <ClInclude Include="ImageFilter\PixelateFilter.h" />
     <ClInclude Include="ImageFilter\RadialDistortionFilter.h" />
@@ -113,6 +118,7 @@
     <ClInclude Include="ImageFilter\ReflectionFilter.h" />
     <ClInclude Include="ImageFilter\ReliefFilter.h" />
     <ClInclude Include="ImageFilter\SaturationModifyFilter.h" />
+    <ClInclude Include="ImageFilter\SceneFilter.h" />
     <ClInclude Include="ImageFilter\SepiaFilter.h" />
     <ClInclude Include="ImageFilter\SmashColorFilter.h" />
     <ClInclude Include="ImageFilter\ThresholdFilter.h" />

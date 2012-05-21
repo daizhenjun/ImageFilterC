@@ -138,10 +138,8 @@ public:
      * @param y
      * @param color
      */
-    void setPixelColor(int x, int y, int color,  bool updated){
-		if(updated){
-			colorArray[((y * width+x))] = color;
-		}
+    void setPixelColor(int x, int y, int color){
+		colorArray[((y * width+x))] = color;
 #ifdef WIN32
 		BYTE r  = (0xFF0000 &color) >> 16;
 		BYTE g  = (0x00FF00 &color) >> 8;
@@ -152,9 +150,6 @@ public:
 #endif
     }
     
-	void setPixelColor(int x, int y, int color){
-		setPixelColor(x, y, color, false);
-	}
 
     /**
      * Get the color for a specified pixel
@@ -176,10 +171,8 @@ public:
      * @param c1
      * @param c2
      */
-    void setPixelColor(int x, int y, int r, int g, int b, bool updated){
-		if(updated){
-			colorArray[((y * width+x))] = (255 << 24) + (r << 16) + (g << 8) + b;
-		}
+    void setPixelColor(int x, int y, int r, int g, int b){
+		colorArray[((y * width+x))] = (255 << 24) + (r << 16) + (g << 8) + b;
 #ifdef WIN32
 		destImage->SetPixelRGB(x, y, r, g, b);
 #else //only for apple ios
@@ -187,9 +180,6 @@ public:
 #endif
     }
 
-	void setPixelColor(int x, int y, int r, int g, int b){
-		setPixelColor(x, y, r, g, b, false);
-	}
     
     void copyPixelsFromBuffer() { //将colorArray数组指针中的数据绑定到destImage
 #ifdef WIN32

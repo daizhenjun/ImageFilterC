@@ -52,6 +52,13 @@
 
 //v0.2
 #include "ImageFilter\LomoFilter.h"
+#include "ImageFilter\PaintBorderFilter.h"
+#include "ImageFilter\SceneFilter.h"
+#include "ImageFilter\ComicFilter.h"
+#include "ImageFilter\FilmFilter.h"
+#include "ImageFilter\FocusFilter.h"
+#include "ImageFilter\CleanGlassFilter.h"
+
 
 using namespace std;
 using namespace HaoRan_ImageFilter;
@@ -67,6 +74,7 @@ void printDateTime()
 
 vector<IImageFilter*> LoadFilterVector(){
 	vector<IImageFilter*> vectorFilter;
+//v0.1
 	//vectorFilter.push_back(new InvertFilter);
 	//vectorFilter.push_back(new AutoLevelFilter(0.5));
 	//vectorFilter.push_back(new RadialDistortionFilter());
@@ -85,7 +93,7 @@ vector<IImageFilter*> LoadFilterVector(){
 	//vectorFilter.push_back(new GradientMapFilter());
 	//vectorFilter.push_back(new HistogramEqualFilter());
 	//vectorFilter.push_back(new LightFilter());
-	//vectorFilter.push_back(new MistFilter());
+	vectorFilter.push_back(new MistFilter());
 	//vectorFilter.push_back(new MonitorFilter());
 	//vectorFilter.push_back(new MosaicFilter());
 	//vectorFilter.push_back(new NeonFilter());
@@ -108,7 +116,21 @@ vector<IImageFilter*> LoadFilterVector(){
 	//vectorFilter.push_back(new VintageFilter());
 	//vectorFilter.push_back(new WaterWaveFilter());
 	//vectorFilter.push_back(new XRadiationFilter());
+
+//v0.2
 	vectorFilter.push_back(new LomoFilter());
+	vectorFilter.push_back(new PaintBorderFilter(0x00FF00));//green
+    vectorFilter.push_back(new PaintBorderFilter(0x0000FF));//blue
+	vectorFilter.push_back(new PaintBorderFilter(0xFFFF00));//yellow
+	vectorFilter.push_back(new SceneFilter(5.0f, Gradient::Scene()));
+	vectorFilter.push_back(new SceneFilter(5.0f, Gradient::Scene1()));
+	vectorFilter.push_back(new SceneFilter(5.0f, Gradient::Scene2()));
+	vectorFilter.push_back(new SceneFilter(5.0f, Gradient::Scene3()));
+    vectorFilter.push_back(new ComicFilter());
+	vectorFilter.push_back(new FilmFilter(80.0f));
+	vectorFilter.push_back(new FocusFilter());
+	vectorFilter.push_back(new CleanGlassFilter());
+
 	return vectorFilter;
 }
 
@@ -144,7 +166,6 @@ Image LoadImage(NSString imagePath){
 void SaveImage(Image image, string savePath)
 {
 	//输出处理后的图片	
-
 	CString outfilePath((CString)savePath.c_str());
 	HRESULT hresult = image.destImage->Save(outfilePath);
 	if(FAILED(hresult)){
@@ -154,7 +175,7 @@ void SaveImage(Image image, string savePath)
 	image.image->Destroy();
 	image.Destroy();
 	printDateTime();
-	string s = "";char* p = (char*)s.c_str();cin>>p;
+	//string s = "";char* p = (char*)s.c_str();cin>>p;
 }
 #else
 void SaveImage(Image image, NSString savePath) {
@@ -171,14 +192,32 @@ void SaveImage(Image image, NSString savePath) {
 
 int _tmain(int argc, _TCHAR* argv[])
 {
-	//加载图片
-	Image image = LoadImage("d:\\4.jpg");
+	////加载图片
+	//Image image = LoadImage("d:\\4.jpg");
+	////开始处理图片
+	//vector<IImageFilter*>::iterator it;
+	//for(it=vectorFilter.begin(); it!=vectorFilter.end(); it++){    
+	//	image = (*it)->process(image);	
+ //   }
+	//SaveImage(image, "d:\\15.jpg");
+	//return 0;
+
 	//开始处理图片
+	int i = 0;
 	vector<IImageFilter*>::iterator it;
+	char temp[64];
 	for(it=vectorFilter.begin(); it!=vectorFilter.end(); it++){    
+		//加载图片
+	    Image image = LoadImage("d:\\source.jpg");
 		image = (*it)->process(image);	
+		sprintf(temp, "d:\\%d.jpg", i);  
+		string filename(temp);
+#ifndef WIN32 //only for apple ios
+		image.copyPixelsFromBuffer();
+#endif
+    	SaveImage(image, filename);
+		i++;
     }
-	SaveImage(image, "d:\\15.jpg");
-	return 0;
+
 }
 

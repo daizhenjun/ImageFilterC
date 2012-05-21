@@ -44,10 +44,10 @@ public:
 	    	             g = imageIn.getGComponent(x, y);
 		                 b = imageIn.getBComponent(x, y);
 		         	 }
-    	       		 imageIn.setPixelColor(x, y, r, g, b, true);
+    	       		 imageIn.setPixelColor(x, y, r, g, b);
     	       	 }
     	       	 else{ //复制上一行      		 
-    	             imageIn.setPixelColor(x, y, imageIn.getPixelColor(x, y -1), true);
+    	             imageIn.setPixelColor(x, y, imageIn.getPixelColor(x, y -1));
     	         }
     	    }
    	   }

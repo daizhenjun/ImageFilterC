@@ -38,8 +38,8 @@ public:
             for (int y = 0; y < height; y++) {
             	  int k = NoiseFilter::getRandomInt(1, 123456);
             	  //ÏñËØ¿é´óÐ¡
-            	  int dx = x + k % 19;
-            	  int dy = y + k % 19;
+            	  int dx = x + k % 8;
+            	  int dy = y + k % 8;
             	  if(dx >= width) {
             		  dx = width -1;   				  
             	  }

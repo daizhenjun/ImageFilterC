@@ -26,7 +26,7 @@ namespace HaoRan_ImageFilter{
 
 class GaussianBlurFilter : public IImageFilter{
 
-private:
+protected:
 	int Padding;
 
 public:
