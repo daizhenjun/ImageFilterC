@@ -180,6 +180,48 @@
     <ClInclude Include="ImageFilter\CleanGlassFilter.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="ImageFilter\ZoomBlurFilter.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageFilter\ThreeDGridFilter.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageFilter\ColorToneFilter.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageFilter\SoftGlowFilter.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageFilter\TileReflectionFilter.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageFilter\BlindFilter.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageFilter\RaiseFrameFilter.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageFilter\ShiftFilter.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageFilter\Distort\BilinearDistort.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageFilter\Distort\WaveFilter.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageFilter\Distort\BulgeFilter.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageFilter\Distort\TwistFilter.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageFilter\Distort\RippleFilter.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageFilter\IllusionFilter.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">

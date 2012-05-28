@@ -66,24 +66,6 @@ public:
     }
 };
 
-class Color{
-public:
-	int R;
-	int G;
-	int B;
-
-	Color(int r, int g, int b) : R(r), G(g), B(b){}
-
-	Color(int rgb){
-		R = ((rgb& 0x00FF0000) >> 16);
-	    G = ((rgb& 0x0000FF00) >> 8);
-		B = ( rgb& 0x000000FF);
-	}
-
-	static int rgb(int r, int g, int b){
-		return (255 << 24) + (r << 16) + (g << 8) + b;
-	}
-};
 
 
 class Gradient

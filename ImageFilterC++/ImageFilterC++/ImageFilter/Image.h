@@ -61,7 +61,8 @@ public:
     CGImageRef destImage;
 #endif    
    
-	 
+	Image(){}; 
+
 #ifdef WIN32
 	//dimensions of image 
     Image(CImage *img){                

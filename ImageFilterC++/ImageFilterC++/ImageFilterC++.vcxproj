@@ -75,6 +75,18 @@
     <None Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ImageFilter\BlindFilter.h" />
+    <ClInclude Include="ImageFilter\ColorToneFilter.h" />
+    <ClInclude Include="ImageFilter\Distort\BilinearDistort.h" />
+    <ClInclude Include="ImageFilter\Distort\BulgeFilter.h" />
+    <ClInclude Include="ImageFilter\Distort\RippleFilter.h" />
+    <ClInclude Include="ImageFilter\Distort\TwistFilter.h" />
+    <ClInclude Include="ImageFilter\Distort\WaveFilter.h" />
+    <ClInclude Include="ImageFilter\IllusionFilter.h" />
+    <ClInclude Include="ImageFilter\RaiseFrameFilter.h" />
+    <ClInclude Include="ImageFilter\ShiftFilter.h" />
+    <ClInclude Include="ImageFilter\SoftGlowFilter.h" />
+    <ClInclude Include="ImageFilter\ThreeDGridFilter.h" />
     <ClInclude Include="ImageFilter\AutoAdjustFilter.h" />
     <ClInclude Include="ImageFilter\AutoLevelFilter.h" />
     <ClInclude Include="ImageFilter\BannerFilter.h" />
@@ -122,11 +134,13 @@
     <ClInclude Include="ImageFilter\SepiaFilter.h" />
     <ClInclude Include="ImageFilter\SmashColorFilter.h" />
     <ClInclude Include="ImageFilter\ThresholdFilter.h" />
+    <ClInclude Include="ImageFilter\TileReflectionFilter.h" />
     <ClInclude Include="ImageFilter\TintFilter.h" />
     <ClInclude Include="ImageFilter\VignetteFilter.h" />
     <ClInclude Include="ImageFilter\VintageFilter.h" />
     <ClInclude Include="ImageFilter\WaterWaveFilter.h" />
     <ClInclude Include="ImageFilter\XRadiationFilter.h" />
+    <ClInclude Include="ImageFilter\ZoomBlurFilter.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
