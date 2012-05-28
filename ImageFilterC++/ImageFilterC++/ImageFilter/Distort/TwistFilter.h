@@ -1,5 +1,5 @@
 /* 
- * HaoRan ImageFilter Classes v0.3
+ * HaoRan ImageFilter Classes v0.
  * Copyright (C) 2012 Zhenjun Dai
  *
  * This library is free software; you can redistribute it and/or modify it
@@ -66,8 +66,8 @@ private:
         t = (t < 0) ? 0 : (t * t * t) ;
         theta += (t * m_twist) / 100.0 ;
 
-        un_x = FClamp (width + r * cos(theta), 0.0, width-1.0);
-        un_y = FClamp (height + r * sin(theta), 0.0, height-1.0);
+        un_x = FClamp (width + r * cos(theta), 0.0, clone.getWidth()-1.0) ;
+        un_y = FClamp (height + r * sin(theta), 0.0, clone.getHeight()-1.0) ;
     }
 
 };

@@ -43,7 +43,7 @@ public:
         nBpp - can be 24 or 32 \n
         crPixel - in order [0,0], [1,0], [0,1], [1,1].
     */
-    static int GetBilinear (double x, double y, int nBpp, vector<int> colors)
+    static int GetBilinear (double x, double y, vector<int> colors)
     {
 		Color color(colors[0]);
         vector<int> px0(3);
@@ -69,42 +69,15 @@ public:
 		px3[1] = color3.G;
 		px3[2] = color3.B;
 		
-        //int crRet = Color::rgb(0xFF, 0xFF, 0xFF);
-		vector<int> crRet(3);
-        //if ((nBpp == 24) || ((PCL_A(px0) & PCL_A(px1) & PCL_A(px2) & PCL_A(px3)) == 0xFF))
+ 		vector<int> crRet(3);
+        for (int i=0 ; i < 3 ; i++)
         {
-            // is 24bit or all alpha of pixel is 0xFF
-            for (int i=0 ; i < 3 ; i++)
-            {
-                double m0 = px0[i] + x * (px1[i] - px0[i]);
-                double m1 = px2[i] + x * (px3[i] - px2[i]);
-                double my = m0 + y * (m1 - m0) ;
-                //((BYTE*)&crRet)[i] = SAFECOLOR(my) ;
-				crRet[i] = SAFECOLOR(my) ;
-            }
+            double m0 = px0[i] + x * (px1[i] - px0[i]);
+            double m1 = px2[i] + x * (px3[i] - px2[i]);
+            double my = m0 + y * (m1 - m0) ;
+          	crRet[i] = SAFECOLOR(my) ;
         }
-        //else
-        //{
-        //    // is 32bit with alpha, calculate destinate alpha value
-        //    double   m0 = PCL_A(px0) + x * (PCL_A(px1) - PCL_A(px0)),
-        //             m1 = PCL_A(px2) + x * (PCL_A(px3) - PCL_A(px2)),
-        //             my = m0 + y * (m1 - m0),
-        //             dAlpha = my ;
-        //    PCL_A(&crRet) = FClamp0255(my) ;
-        //    if (PCL_A(&crRet)) // has alpha
-        //    {
-        //        for (int i=0 ; i < 3 ; i++)
-        //        {
-        //            double   nSum0 = PCL_A(px0) * px0[i],
-        //                     nSum2 = PCL_A(px2) * px2[i] ;
-
-        //            m0 = nSum0 + x * (px1[i] * PCL_A(px1) - nSum0) ;
-        //            m1 = nSum2 + x * (px3[i] * PCL_A(px3) - nSum2) ;
-        //            my = m0 + y * (m1 - m0) ;
-        //            ((BYTE*)&crRet)[i] = FClamp0255(my / dAlpha) ;
-        //        }
-        //    }
-        //}
+     
         return Color::rgb(crRet[0], crRet[1], crRet[2]) ;
     }
 	
@@ -137,14 +110,13 @@ public:
 
 						vector<int> color(4);
 						color[0] = IsInside(width, height, nSrcX, nSrcY) ? clone.getPixelColor(nSrcX,nSrcY) : crNull,
-						color[1] = 	IsInside(width, height, nSrcX_1, nSrcY) ? clone.getPixelColor(nSrcX_1,nSrcY) : crNull,
-						color[2] = 	IsInside(width, height, nSrcX, nSrcY_1) ? clone.getPixelColor(nSrcX,nSrcY_1) : crNull,
-						color[3] = 	IsInside(width, height, nSrcX_1, nSrcY_1) ? clone.getPixelColor(nSrcX_1,nSrcY_1) : crNull,
-						cr = GetBilinear(un_x-nSrcX, un_y-nSrcY, 24/*img.ColorBits()*/, color) ;
+						color[1] = IsInside(width, height, nSrcX_1, nSrcY) ? clone.getPixelColor(nSrcX_1,nSrcY) : crNull,
+						color[2] = IsInside(width, height, nSrcX, nSrcY_1) ? clone.getPixelColor(nSrcX,nSrcY_1) : crNull,
+						color[3] = IsInside(width, height, nSrcX_1, nSrcY_1) ? clone.getPixelColor(nSrcX_1,nSrcY_1) : crNull,
+						cr = GetBilinear(un_x-nSrcX, un_y-nSrcY, color) ;
+						
 					}
-
-					//FCColor::CopyPixelBPP (pPixel, &cr, img.ColorBits()) ;
-					imageIn.setPixelColor(x, y, cr);
+					imageIn.setPixelColor(x, y, cr);		
 			  }
 		  }
 #ifndef WIN32 //only for apple ios

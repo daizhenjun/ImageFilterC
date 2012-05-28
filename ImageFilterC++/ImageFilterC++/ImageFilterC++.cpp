@@ -147,23 +147,23 @@ vector<IImageFilter*> LoadFilterVector(){
 	//vectorFilter.push_back(new CleanGlassFilter());
 
 //v0.3
-	vectorFilter.push_back(new ZoomBlurFilter(30));
-	vectorFilter.push_back(new ThreeDGridFilter(16, 100));
-	vectorFilter.push_back(new ColorToneFilter(Color::rgb(254,168,33), 192));	
-	vectorFilter.push_back(new ColorToneFilter(0x00FF00, 192));	//green
-	vectorFilter.push_back(new ColorToneFilter(0x0000FF, 192));	//blue
-	vectorFilter.push_back(new ColorToneFilter(0xFFFF00, 192));	//yellow
-	vectorFilter.push_back(new SoftGlowFilter(10, 0.1, 0.1));	
-	vectorFilter.push_back(new TileReflectionFilter(20, 8));	
-	vectorFilter.push_back(new BlindFilter(true, 96, 100, Color::rgb(255,255,255)));	
-	vectorFilter.push_back(new BlindFilter(false, 96, 100, Color::rgb(0,0,0)));	
-	vectorFilter.push_back(new RaiseFrameFilter(20));	
-	vectorFilter.push_back(new ShiftFilter(10));	
-	vectorFilter.push_back(new WaveFilter(25, 10));	
-	vectorFilter.push_back(new BulgeFilter(100));	
-	vectorFilter.push_back(new TwistFilter(20, 200));
-	vectorFilter.push_back(new RippleFilter(38, 15, true));
-	vectorFilter.push_back(new IllusionFilter(3));
+	//vectorFilter.push_back(new ZoomBlurFilter(30));
+	//vectorFilter.push_back(new ThreeDGridFilter(16, 100));
+	//vectorFilter.push_back(new ColorToneFilter(Color::rgb(254,168,33), 192));	
+	//vectorFilter.push_back(new ColorToneFilter(0x00FF00, 192));	//green
+	//vectorFilter.push_back(new ColorToneFilter(0x0000FF, 192));	//blue
+	//vectorFilter.push_back(new ColorToneFilter(0xFFFF00, 192));	//yellow
+	//vectorFilter.push_back(new SoftGlowFilter(10, 0.1, 0.1));	
+	//vectorFilter.push_back(new TileReflectionFilter(20, 8));	
+	//vectorFilter.push_back(new BlindFilter(true, 96, 100, Color::rgb(255,255,255)));	
+	//vectorFilter.push_back(new BlindFilter(false, 96, 100, Color::rgb(0,0,0)));	
+	//vectorFilter.push_back(new RaiseFrameFilter(20));	
+	//vectorFilter.push_back(new ShiftFilter(10));	
+	//vectorFilter.push_back(new WaveFilter(25, 10));	
+	//vectorFilter.push_back(new BulgeFilter(-97));	
+	vectorFilter.push_back(new TwistFilter(27, 106));
+	/*vectorFilter.push_back(new RippleFilter(38, 15, true));
+	vectorFilter.push_back(new IllusionFilter(3));*/
 	
 	return vectorFilter;
 }
