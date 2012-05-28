@@ -86,6 +86,7 @@
     <ClInclude Include="ImageFilter\RaiseFrameFilter.h" />
     <ClInclude Include="ImageFilter\ShiftFilter.h" />
     <ClInclude Include="ImageFilter\SoftGlowFilter.h" />
+    <ClInclude Include="ImageFilter\SupernovaFilter.h" />
     <ClInclude Include="ImageFilter\ThreeDGridFilter.h" />
     <ClInclude Include="ImageFilter\AutoAdjustFilter.h" />
     <ClInclude Include="ImageFilter\AutoLevelFilter.h" />

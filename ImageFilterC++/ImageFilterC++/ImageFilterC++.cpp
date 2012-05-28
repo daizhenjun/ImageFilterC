@@ -73,6 +73,7 @@
 #include "ImageFilter\Distort\TwistFilter.h"
 #include "ImageFilter\Distort\RippleFilter.h"
 #include "ImageFilter\IllusionFilter.h"
+#include "ImageFilter\SupernovaFilter.h"
 
 using namespace std;
 using namespace HaoRan_ImageFilter;
@@ -161,10 +162,10 @@ vector<IImageFilter*> LoadFilterVector(){
 	//vectorFilter.push_back(new ShiftFilter(10));	
 	//vectorFilter.push_back(new WaveFilter(25, 10));	
 	//vectorFilter.push_back(new BulgeFilter(-97));	
-	vectorFilter.push_back(new TwistFilter(27, 106));
-	/*vectorFilter.push_back(new RippleFilter(38, 15, true));
-	vectorFilter.push_back(new IllusionFilter(3));*/
-	
+	//vectorFilter.push_back(new TwistFilter(27, 106));
+	//vectorFilter.push_back(new RippleFilter(38, 15, true));
+	//vectorFilter.push_back(new IllusionFilter(3));
+	vectorFilter.push_back(new SupernovaFilter(CPoint(0,0),0xFFFF00,20,100));
 	return vectorFilter;
 }
 
