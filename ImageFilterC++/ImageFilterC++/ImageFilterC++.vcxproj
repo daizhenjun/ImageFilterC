@@ -83,6 +83,7 @@
     <ClInclude Include="ImageFilter\Distort\TwistFilter.h" />
     <ClInclude Include="ImageFilter\Distort\WaveFilter.h" />
     <ClInclude Include="ImageFilter\IllusionFilter.h" />
+    <ClInclude Include="ImageFilter\LensFlareFilter.h" />
     <ClInclude Include="ImageFilter\RaiseFrameFilter.h" />
     <ClInclude Include="ImageFilter\ShiftFilter.h" />
     <ClInclude Include="ImageFilter\SoftGlowFilter.h" />
