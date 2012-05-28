@@ -1,0 +1,69 @@
+/* 
+ * HaoRan ImageFilter Classes v0.3
+ * Copyright (C) 2012 Zhenjun Dai
+ *
+ * This library is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU Lesser General Public License as published by the
+ * Free Software Foundation; either version 2.1 of the License, or (at your
+ * option) any later version.
+ *
+ * This library is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+ * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Lesser General Public License
+ * for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this library; if not, write to the Free Software Foundation.
+ */
+
+#if !defined(ShiftFilter_H)
+#define ShiftFilter_H
+
+#include "IImageFilter.h"
+
+
+namespace HaoRan_ImageFilter{
+
+class ShiftFilter : public IImageFilter{
+
+private:
+    int   m_amount ; // max shift pixel
+
+public:
+    /**
+        Constructor \n
+        nAmount >= 2.
+    */
+    ShiftFilter(int nAmount)
+    {
+        m_amount = ((nAmount >= 2) ? nAmount : 2) ;
+    }
+
+	
+	virtual Image process(Image imageIn)
+	{
+		  int r, g, b, sx, m_current;
+		  int width = imageIn.getWidth();
+		  int height = imageIn.getHeight();
+		  Image clone = imageIn.clone();
+		  for(int y = 0 ; y < height ; y++){
+			  for(int x = 0 ; x < width ; x++){
+				   if (x == 0) {
+					   m_current = (rand() % m_amount) * ((rand() % 2) ? 1 : -1) ;
+				   }
+				   int sx = FClamp(x+m_current, 0, width-1);
+			       r = clone.getRComponent(sx, y);
+				   g = clone.getGComponent(sx, y);
+				   b = clone.getBComponent(sx, y);
+				   imageIn.setPixelColor(x, y, r, g, b);
+			  }
+		  }
+#ifndef WIN32 //only for apple ios
+		imageIn.copyPixelsFromBuffer();
+#endif
+		return imageIn;
+	}
+};
+
+}// namespace HaoRan
+#endif
