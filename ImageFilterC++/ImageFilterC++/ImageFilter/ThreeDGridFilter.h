@@ -26,14 +26,14 @@ namespace HaoRan_ImageFilter{
 
 class ThreeDGridFilter : public IImageFilter{
 private:
-	int   m_size ;
-    int   m_depth ;
+	int   _size ;
+    int   _depth ;
 public:
 
-	ThreeDGridFilter(int nSize, int nDepth)
+	ThreeDGridFilter(int size, int depth)
     {
-        m_size = ((nSize >= 1) ? nSize : 1) ;
-        m_depth = nDepth ;
+        _size = ((size >= 1) ? size : 1) ;
+        _depth = depth ;
     };
 
 	virtual Image process(Image imageIn)
@@ -46,14 +46,14 @@ public:
 					b = imageIn.getBComponent(x, y);
 
 				    int  d = 0 ;
-					if (((y-1) % m_size == 0) && (x % m_size) && ((x+1) % m_size))
-						d = -m_depth ; // top
-					else if (((y+2) % m_size == 0) && (x % m_size) && ((x+1) % m_size))
-						d = m_depth ; // bottom
-					else if (((x-1) % m_size == 0) && (y % m_size) && ((y+1) % m_size))
-						d = m_depth ; // left
-					else if (((x+2) % m_size == 0) && (y % m_size) && ((y+1) % m_size))
-						d = -m_depth ; // right
+					if (((y-1) % _size == 0) && (x % _size) && ((x+1) % _size))
+						d = -_depth ; // top
+					else if (((y+2) % _size == 0) && (x % _size) && ((x+1) % _size))
+						d = _depth ; // bottom
+					else if (((x-1) % _size == 0) && (y % _size) && ((y+1) % _size))
+						d = _depth ; // left
+					else if (((x+2) % _size == 0) && (y % _size) && ((y+1) % _size))
+						d = -_depth ; // right
 
 				   imageIn.setPixelColor(x, y, SAFECOLOR(r+d),  SAFECOLOR(g+d),  SAFECOLOR(b+d));
 			  }
@@ -61,7 +61,7 @@ public:
 #ifndef WIN32 //only for apple ios
 	  	imageIn.copyPixelsFromBuffer();
 #endif
-		  return imageIn;
+		return imageIn;
 	}
 };
 

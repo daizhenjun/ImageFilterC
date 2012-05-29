@@ -27,15 +27,15 @@ namespace HaoRan_ImageFilter{
 class IllusionFilter : public IImageFilter{
 
 private:
-	double   m_amount ;
-    double   m_scale ;
-    double   m_offset ;
+	double _amount;
+    double _scale;
+    double _offset;
  
 public:
 
-	IllusionFilter (int nAmount)
+	IllusionFilter (int amount)
     {
-        m_amount = LIB_PI / ((nAmount >= 1) ? nAmount : 1) ;
+        _amount = LIB_PI / ((amount >= 1) ? amount : 1) ;
     }
 
 	virtual Image process(Image imageIn)
@@ -50,14 +50,14 @@ public:
 				g = imageIn.getGComponent(x, y);
 				b = imageIn.getBComponent(x, y);
 
-				m_scale = sqrt(width*width + height*height) / 2 ;
-				m_offset = (int)(m_scale / 2) ;
-				double cx = (x - width / 2.0) / m_scale ;
-				double cy = (y - height / 2.0) / m_scale ;
-				double angle = floor (atan2(cy,cx) / 2.0 / m_amount) * 2.0 * m_amount + m_amount;
+				_scale = sqrt(width*width + height*height) / 2 ;
+				_offset = (int)(_scale / 2) ;
+				double cx = (x - width / 2.0) / _scale ;
+				double cy = (y - height / 2.0) / _scale ;
+				double angle = floor (atan2(cy,cx) / 2.0 / _amount) * 2.0 * _amount + _amount;
 				double radius = sqrt(cx*cx + cy*cy) ;
-				int xx = (int)(x - m_offset * cos(angle)) ;
-				int yy = (int)(y - m_offset * sin(angle)) ;
+				int xx = (int)(x - _offset * cos(angle)) ;
+				int yy = (int)(y - _offset * sin(angle)) ;
 				xx = FClamp(xx, 0, (int)(width-1));
 				yy = FClamp(yy, 0, (int)(height-1));
 

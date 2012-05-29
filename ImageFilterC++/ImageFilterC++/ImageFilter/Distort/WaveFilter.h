@@ -27,35 +27,36 @@ namespace HaoRan_ImageFilter{
 class WaveFilter : public BilinearDistort{
 
 private:
-	double m_phase ;
-    double m_amplitude ;
-    double m_wave_length ;
+	double _phase;
+    double _amplitude ;
+    double _waveLength ;
 
 public:
 
-	WaveFilter(int nWavelength, int nAmplitude, double fPhase=0)
+	WaveFilter(int wavelength, int amplitude, double phase=0)
     {
-        m_phase = fPhase ;
-        m_wave_length = 2 * ((nWavelength >= 1) ? nWavelength : 1) ;
-        m_amplitude = ((nAmplitude >= 1) ? nAmplitude : 1) ;
+        _waveLength = 2 * ((wavelength >= 1) ? wavelength : 1) ;
+        _amplitude = ((amplitude >= 1) ? amplitude : 1) ;
+		_phase = phase ;
     };
 
 	virtual void calc_undistorted_coord (int x, int y, double& un_x, double& un_y)
     {
         double width = clone.getWidth();
         double height = clone.getHeight() ;
-        double fScaleX = 1.0, fScaleY = 1.0 ;
+        double fScaleX = 1.0;
+		double fScaleY = 1.0 ;
         if (width < height)
             fScaleX = height / width ;
         else if (width > height)
             fScaleY = width / height ;
 
         // distances to center, scaled
-        double   cen_x = width / 2.0,
-                 cen_y = height / 2.0,
-                 dx = (x - cen_x) * fScaleX,
-                 dy = (y - cen_y) * fScaleY,
-                 amnt = m_amplitude * sin (2 * LIB_PI * sqrt (dx*dx + dy*dy) / m_wave_length + m_phase) ;
+        double cen_x = width / 2.0;
+        double cen_y = height / 2.0;
+        double dx = (x - cen_x) * fScaleX;
+        double dy = (y - cen_y) * fScaleY;
+        double amnt = _amplitude * sin (2 * LIB_PI * sqrt (dx*dx + dy*dy) / _waveLength + _phase) ;
         un_x = (amnt + dx) / fScaleX + cen_x ;
         un_y = (amnt + dy) / fScaleY + cen_y ;
         un_x = FClamp (un_x, 0.0, width-1.0) ;

@@ -25,12 +25,12 @@
 namespace HaoRan_ImageFilter{
 
 class RaiseFrameFilter : public IImageFilter{
-	int   m_size ;
+	int   _size ;
 public:
 
-	RaiseFrameFilter(int nSize)
+	RaiseFrameFilter(int size)
     {
-        m_size = ((nSize >= 1) ? nSize : 1) ;
+        _size = ((size >= 1) ? size : 1) ;
     };
 
 	virtual Image process(Image imageIn)
@@ -44,13 +44,13 @@ public:
 				g = imageIn.getGComponent(x, y);
 				b = imageIn.getBComponent(x, y);
 				int cr ;
-				if ((x < m_size) && (y < height-x) && (y >= x))
+				if ((x < _size) && (y < height-x) && (y >= x))
 					cr = Color::rgb(255,255,65) ; // left
-				else if ((y < m_size) && (x < width-y) && (x >= y))
+				else if ((y < _size) && (x < width-y) && (x >= y))
 					cr = Color::rgb(255,255,120) ; // top
-				else if ((x >width-m_size) && (y >= width-x) && (y < height+x-width))
+				else if ((x >width-_size) && (y >= width-x) && (y < height+x-width))
 					cr = Color::rgb(0,0,65) ; // right
-				else if (y >height-m_size)
+				else if (y >height-_size)
 					cr = Color::rgb(0,0,120) ; // bottom
 				else
 					continue;

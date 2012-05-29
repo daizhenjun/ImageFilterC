@@ -27,9 +27,9 @@ namespace HaoRan_ImageFilter{
 class ColorToneFilter : public IImageFilter{
 
 private:
-	double   m_hue ;
-    double   m_saturation ;
-    double   m_lum_tab[256] ;
+	double   _hue ;
+    double   _saturation ;
+    double   _lum_tab[256] ;
 
 public:
 	 /// @name RGB <--> HLS (Hue, Lightness, Saturation).
@@ -127,13 +127,13 @@ public:
         return (int)((30*r + 59*g + 11*g) / 100) ;
     }
 
-	ColorToneFilter(int crTone, int nSaturation)
+	ColorToneFilter(int tone, int saturation)
     {
         double   l ;
-        RGBtoHLS (crTone, m_hue, l, m_saturation) ;
+        RGBtoHLS (tone, _hue, l, _saturation) ;
 
-        m_saturation = m_saturation * (nSaturation/255.0) * (nSaturation/255.0) ;
-        m_saturation = ((m_saturation < 1) ? m_saturation : 1) ;
+        _saturation = _saturation * (saturation/255.0) * (saturation/255.0) ;
+        _saturation = ((_saturation < 1) ? _saturation : 1) ;
 
         for (int i=0 ; i < 256 ; i++)
         {
@@ -141,8 +141,8 @@ public:
             double    h, l, s ;
             RGBtoHLS (cr, h, l, s) ;
 
-            l = l * (1 + (128-abs(nSaturation-128)) / 128.0 / 9.0) ;
-            m_lum_tab[i] = ((l < 1) ? l : 1) ;
+            l = l * (1 + (128-abs(saturation-128)) / 128.0 / 9.0) ;
+            _lum_tab[i] = ((l < 1) ? l : 1) ;
         }
     };
 
@@ -156,15 +156,15 @@ public:
 				   g = imageIn.getGComponent(x, y);
 				   b = imageIn.getBComponent(x, y);
 
-				   double  l = m_lum_tab[GetGrayscale(r, g, b)] ;
-				   int   cr =HLStoRGB (m_hue, l, m_saturation) ;
+				   double  l = _lum_tab[GetGrayscale(r, g, b)] ;
+				   int   cr =HLStoRGB (_hue, l, _saturation) ;
 				   imageIn.setPixelColor(x, y, cr);
 			  }
 		  }
 #ifndef WIN32 //only for apple ios
 		imageIn.copyPixelsFromBuffer();
 #endif
-		  return imageIn;
+		return imageIn;
 	}
 };
 

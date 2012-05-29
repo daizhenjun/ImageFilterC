@@ -27,15 +27,15 @@
 
 enum Colors
 {
-	Black = 0xff000000,
-	White = 0xffffffff,
-	Red = 0xffff0000,
-	Magenta = 0xffff00ff,
-	Blue = 0xff0000ff,
-    Cyan = 0xff00ffff,
-	Green = 0xff00ff00,
-	Yellow = 0xffffff00,
-	Ltgray = 0xffcccccc
+	Black = 0x000000,
+	White = 0xffffff,
+	Red = 0xff0000,
+	Magenta = 0xff00ff,
+	Blue = 0x0000ff,
+    Cyan = 0x00ffff,
+	Green = 0x00ff00,
+	Yellow = 0xffff00,
+	Ltgray = 0xcccccc
 };
 
 

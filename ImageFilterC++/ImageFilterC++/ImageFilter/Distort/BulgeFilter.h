@@ -27,39 +27,38 @@ namespace HaoRan_ImageFilter{
 class BulgeFilter : public BilinearDistort{
 
 private:
-    double   m_amount ;
-    double   m_offset_x ;
-    double   m_offset_y ;
+    double   _amount ;
+    double   _offsetX ;
+    double   _offsetY ;
 
 public:
     /**
         Constructor \n
         param -200 <= nAmount <= 100 \n
-        param -1 <= offset_x (offset_y) <= 1
+        param -1 <= _offsetX (_offsetY) <= 1
     */
-    BulgeFilter (int nAmount, double offset_x=0, double offset_y=0)
+    BulgeFilter (int amount, double offsetX=0, double offsetY=0)
     {
-        m_amount = nAmount / 100.0 ;
-        m_offset_x = FClamp(offset_x, -1.0, 1.0) ;
-        m_offset_y = FClamp(offset_y, -1.0, 1.0) ;
+        _amount = amount / 100.0 ;
+        _offsetX = FClamp(offsetX, -1.0, 1.0) ;
+        _offsetY = FClamp(offsetY, -1.0, 1.0) ;
     }
 
 	virtual void calc_undistorted_coord (int x, int y, double& un_x, double& un_y)
     {
-        double   hw = clone.getWidth() / 2.0 ;
-        double   hh = clone.getHeight() / 2.0 ;
-        double   maxrad = (hw < hh ? hw : hh) ;
-        hw += m_offset_x * hw ;
-        hh += m_offset_y * hh ;
+        double hw = clone.getWidth() / 2.0 ;
+        double hh = clone.getHeight() / 2.0 ;
+        double maxrad = (hw < hh ? hw : hh) ;
+        hw += _offsetX * hw ;
+        hh += _offsetY * hh ;
 
-        double   u = x - hw ;
-        double   v = y - hh ;
-        double   r = sqrt(u*u + v*v) ;
-        double   rscale1 = 1.0 - (r / maxrad) ;
-
+        double u = x - hw ;
+        double v = y - hh ;
+        double r = sqrt(u*u + v*v) ;
+        double rscale1 = 1.0 - (r / maxrad) ;
         if (rscale1 > 0)
         {
-            double   rscale2 = 1.0 - m_amount * rscale1 * rscale1 ;
+            double rscale2 = 1.0 - _amount * rscale1 * rscale1 ;
             un_x = FClamp (u * rscale2 + hw, 0.0, clone.getWidth()-1.0) ;
             un_y = FClamp (v * rscale2 + hh, 0.0, clone.getHeight()-1.0) ;
         }

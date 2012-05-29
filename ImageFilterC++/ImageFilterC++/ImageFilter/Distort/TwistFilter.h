@@ -1,5 +1,5 @@
 /* 
- * HaoRan ImageFilter Classes v0.
+ * HaoRan ImageFilter Classes v0.3
  * Copyright (C) 2012 Zhenjun Dai
  *
  * This library is free software; you can redistribute it and/or modify it
@@ -27,44 +27,43 @@ namespace HaoRan_ImageFilter{
 class TwistFilter : public BilinearDistort{
 
 private:
-    double   m_twist ;
-    double   m_size ;
-    double   m_offset_x ;
-    double   m_offset_y ;
+    double   _twist ;
+    double   _size ;
+    double   _offsetX ;
+    double   _offsetY ;
 
 public:
     /**
-        Constructor \n
-        param -45 <= nAmount <= 45 \n
-        param 1 <= nSize <= 200 \n
-        param -2 <= offset_x (offset_y) <= 2
+        param -45 <= _amount <= 45 \n
+        param 1 <= _size <= 200 \n
+        param -2 <= _offsetX (_offsetY) <= 2
     */
-    TwistFilter (int nAmount, int nSize, double offset_x=0, double offset_y=0)
+    TwistFilter (int amount, int size, double offsetX=0, double offsetY=0)
     {
-        nAmount = -nAmount ;
-        m_twist = nAmount * nAmount * ((nAmount > 0) ? 1 : -1) ;
+        amount = -amount ;
+        _twist = amount * amount * ((amount > 0) ? 1 : -1) ;
 
-        m_size = 1.0 / (FClamp(nSize, 1, 200) / 100.0) ;
-        m_offset_x = FClamp(offset_x, -2.0, 2.0) ;
-        m_offset_y = FClamp(offset_y, -2.0, 2.0) ;
+        _size = 1.0 / (FClamp(size, 1, 200) / 100.0) ;
+        _offsetX = FClamp(offsetX, -2.0, 2.0) ;
+        _offsetY = FClamp(offsetY, -2.0, 2.0) ;
     }
 private:
     virtual void calc_undistorted_coord (int x, int y, double& un_x, double& un_y)
     {
-        double   width = clone.getWidth() / 2.0 ;
-        double   height = clone.getHeight() / 2.0 ;
-        double   invmaxrad = 1.0 / (width < height ? width : height) ;
-        width += m_offset_x * width ;
-        height += m_offset_y * height ;
+        double	width = clone.getWidth() / 2.0 ;
+        double	height = clone.getHeight() / 2.0 ;
+        double	invmaxrad = 1.0 / (width < height ? width : height) ;
+        width += _offsetX * width ;
+        height += _offsetY * height ;
 
         double   u = x - width ;
         double   v = y - height ;
         double   r = sqrt(u*u + v*v) ;
         double   theta = atan2(v, u) ;
 
-        double   t = 1 - ((r * m_size) * invmaxrad) ;
+        double   t = 1 - ((r * _size) * invmaxrad) ;
         t = (t < 0) ? 0 : (t * t * t) ;
-        theta += (t * m_twist) / 100.0 ;
+        theta += (t * _twist) / 100.0 ;
 
         un_x = FClamp (width + r * cos(theta), 0.0, clone.getWidth()-1.0) ;
         un_y = FClamp (height + r * sin(theta), 0.0, clone.getHeight()-1.0) ;

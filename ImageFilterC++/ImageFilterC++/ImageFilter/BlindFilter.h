@@ -27,20 +27,20 @@ namespace HaoRan_ImageFilter{
 class BlindFilter : public IImageFilter{
 
 private:
-	bool m_direct;//horizontal: true,  vertical: false
-	int m_color;
-	int m_opacity;
-    int m_width;
+	bool _direct;//horizontal: true,  vertical: false
+	int _color;
+	int _opacity;
+    int _width;
 	
 public:
 	
 
-    BlindFilter(bool nDirect, int nWidth, int nOpacity, int blind_color)
+    BlindFilter(bool direct, int width, int opacity, int blindColor)
     {
-        m_direct = nDirect ;
-        m_width = ((nWidth >= 2) ? nWidth : 2) ;
-        m_color = blind_color ;
-        m_opacity = FClamp (nOpacity, 1, 100) ;
+        _direct = direct ;
+        _width = (width >= 2) ? width : 2;
+        _opacity = FClamp (opacity, 1, 100);
+		_color = blindColor;
     };
 
 
@@ -53,15 +53,15 @@ public:
 				g = imageIn.getGComponent(x, y);
 				b = imageIn.getBComponent(x, y);
 				int  nMod = 0 ;
-				if (m_direct) // horizontal direction
-					nMod = y % m_width ;
-				else if (m_direct == false) // vertical direction
-					nMod = x % m_width ;
+				if (_direct) // horizontal direction
+					nMod = y % _width ;
+				else if (_direct == false) // vertical direction
+					nMod = x % _width ;
 
-				double fDelta = 255.0 * (m_opacity/100.0) / (m_width-1.0);
+				double fDelta = 255.0 * (_opacity/100.0) / (_width-1.0);
 				a = FClamp0255(nMod * fDelta) ;
-				Color color(m_color);
-				if (m_color == 0xFF)
+				Color color(_color);
+				if (_color == 0xFF)
 				{
 					imageIn.setPixelColor(x, y, color.R, color.G, color.B);
 					continue ;

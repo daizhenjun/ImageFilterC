@@ -27,16 +27,16 @@ namespace HaoRan_ImageFilter{
 class ShiftFilter : public IImageFilter{
 
 private:
-    int   m_amount ; // max shift pixel
+    int   _amount ; // max shift pixel
 
 public:
     /**
         Constructor \n
-        nAmount >= 2.
+        amount >= 2.
     */
-    ShiftFilter(int nAmount)
+    ShiftFilter(int amount)
     {
-        m_amount = ((nAmount >= 2) ? nAmount : 2) ;
+        _amount = ((amount >= 2) ? amount : 2) ;
     }
 
 	
@@ -49,7 +49,7 @@ public:
 		  for(int y = 0 ; y < height ; y++){
 			  for(int x = 0 ; x < width ; x++){
 				   if (x == 0) {
-					   m_current = (rand() % m_amount) * ((rand() % 2) ? 1 : -1) ;
+					   m_current = (rand() % _amount) * ((rand() % 2) ? 1 : -1) ;
 				   }
 				   int sx = FClamp(x+m_current, 0, width-1);
 			       r = clone.getRComponent(sx, y);

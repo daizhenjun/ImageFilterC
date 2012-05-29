@@ -27,21 +27,20 @@ namespace HaoRan_ImageFilter{
 class RippleFilter : public BilinearDistort{
 
 private:
-    int   m_wave_length ;
-    int   m_amplitude ;
-    int   m_sin_type ;
+    int _waveLength ;
+    int _amplitude ;
+    int _sinType ;
 
 public:
-    /**
-        Constructor \n
-        nWavelength >= 1 \n
-        nAmplitude >= 1
+    /*
+        _waveLength >= 1
+        _amplitude >= 1
     */
-    RippleFilter (int nWavelength, int nAmplitude, bool bSinType=true)
+    RippleFilter (int waveLength, int amplitude, bool sinType=true)
     {
-        m_wave_length = ((nWavelength >= 1) ? nWavelength : 1) ;
-        m_amplitude = ((nAmplitude >= 1) ? nAmplitude : 1) ;
-        m_sin_type = (bSinType ? 1 : 0) ;
+        _waveLength = ((waveLength >= 1) ? waveLength : 1) ;
+        _amplitude = ((amplitude >= 1) ? amplitude : 1) ;
+        _sinType = (sinType ? 1 : 0) ;
     }
 
     virtual void calc_undistorted_coord (int x, int y, double& un_x, double& un_y)
@@ -53,10 +52,10 @@ public:
     }
     double shift_amount (int nPos) const
     {
-        if (m_sin_type)
-            return m_amplitude * sin(nPos*2*LIB_PI/m_wave_length) ;
+        if (_sinType)
+            return _amplitude * sin(nPos*2*LIB_PI/_waveLength) ;
         else
-            return floor (m_amplitude * (fabs ((((nPos % m_wave_length) / (double)m_wave_length) * 4) - 2) - 1)) ;
+            return floor (_amplitude * (fabs ((((nPos % _waveLength) / (double)_waveLength) * 4) - 2) - 1)) ;
     }
 };
 

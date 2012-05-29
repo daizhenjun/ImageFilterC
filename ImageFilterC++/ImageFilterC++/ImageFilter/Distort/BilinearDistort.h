@@ -1,5 +1,5 @@
 /* 
- * HaoRan ImageFilter Classes v0.1
+ * HaoRan ImageFilter Classes v0.3
  * Copyright (C) 2012 Zhenjun Dai
  *
  * This library is free software; you can redistribute it and/or modify it
@@ -19,8 +19,8 @@
 #if !defined(BilinearDistort_H)
 #define BilinearDistort_H
 
-#include "../IImageFilter.h"
 #include "../Image.h"
+#include "../GradientFilter.h"
 
 namespace HaoRan_ImageFilter{
 
@@ -29,19 +29,19 @@ protected:
 	Image clone;
 
 public:
-
 	BilinearDistort(){};
 
 	virtual void calc_undistorted_coord (int x, int y, double& un_x, double& un_y) =0 ;
 	
 	
-	bool IsInside (int width , int height, int x, int y) const {return (x>=0) && (x<width) && (y>=0) && (y<height);}
+	bool IsInside (int width , int height, int x, int y) const {
+		return (x>=0) && (x<width) && (y>=0) && (y<height);
+	}
 
-	    /**
+	/**
         Calculate bilinear interpolation \n
         0 <= x,y < 1, distance to crPixel[0,0] \n
-        nBpp - can be 24 or 32 \n
-        crPixel - in order [0,0], [1,0], [0,1], [1,1].
+        colors - in order [0,0], [1,0], [0,1], [1,1].
     */
     static int GetBilinear (double x, double y, vector<int> colors)
     {
@@ -83,38 +83,30 @@ public:
 	
 	virtual Image process(Image imageIn)
 	{
-		  int r, g, b;
 		  clone = imageIn.clone();
 		  int width = imageIn.getWidth();
 		  int height = imageIn.getHeight(); 
 		  for(int x = 0 ; x < width; x++){
 			  for(int y = 0 ; y < height ; y++){
-				 /*  r = 255 - imageIn.getRComponent(x, y);
-				   g = 255 - imageIn.getGComponent(x, y);
-				   b = 255 - imageIn.getBComponent(x, y);
-				   imageIn.setPixelColor(x, y, r, g, b);*/
-
 				    double   un_x, un_y ;
 					calc_undistorted_coord (x, y, un_x, un_y) ;
 
-					int   crNull = Color::rgb(0xFF,0xFF,0xFF) ;
-					int   cr  = crNull ;
-
+					int crNull = Colors::White;
+					int cr  = crNull ;
 					if ( (un_x > -1) && (un_x < width) && (un_y > -1) && (un_y < height) )
 					{
 						// only this range is valid
-						int   nSrcX = ((un_x < 0) ? -1 : (int)un_x),
-							  nSrcY = ((un_y < 0) ? -1 : (int)un_y),
-							  nSrcX_1 = nSrcX + 1,
-							  nSrcY_1 = nSrcY + 1 ;
+						int nSrcX = ((un_x < 0) ? -1 : (int)un_x);
+						int nSrcY = ((un_y < 0) ? -1 : (int)un_y);
+						int nSrcX_1 = nSrcX + 1;
+						int nSrcY_1 = nSrcY + 1;
 
 						vector<int> color(4);
-						color[0] = IsInside(width, height, nSrcX, nSrcY) ? clone.getPixelColor(nSrcX,nSrcY) : crNull,
-						color[1] = IsInside(width, height, nSrcX_1, nSrcY) ? clone.getPixelColor(nSrcX_1,nSrcY) : crNull,
-						color[2] = IsInside(width, height, nSrcX, nSrcY_1) ? clone.getPixelColor(nSrcX,nSrcY_1) : crNull,
-						color[3] = IsInside(width, height, nSrcX_1, nSrcY_1) ? clone.getPixelColor(nSrcX_1,nSrcY_1) : crNull,
-						cr = GetBilinear(un_x-nSrcX, un_y-nSrcY, color) ;
-						
+						color[0] = IsInside(width, height, nSrcX, nSrcY) ? clone.getPixelColor(nSrcX,nSrcY) : crNull;
+						color[1] = IsInside(width, height, nSrcX_1, nSrcY) ? clone.getPixelColor(nSrcX_1,nSrcY) : crNull;
+						color[2] = IsInside(width, height, nSrcX, nSrcY_1) ? clone.getPixelColor(nSrcX,nSrcY_1) : crNull;
+						color[3] = IsInside(width, height, nSrcX_1, nSrcY_1) ? clone.getPixelColor(nSrcX_1,nSrcY_1) : crNull;
+						cr = GetBilinear(un_x-nSrcX, un_y-nSrcY, color);					
 					}
 					imageIn.setPixelColor(x, y, cr);		
 			  }
