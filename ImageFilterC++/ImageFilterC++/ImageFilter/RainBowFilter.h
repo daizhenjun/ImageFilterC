@@ -38,7 +38,7 @@ public:
 		gradAngleDegree = 40;
 
 		blender.Mixture = 0.25f;
-		blender.Mode = ::LinearLight;
+		blender.Mode = ::Additive;//LinearLight;
 		   
         vector<int> rainbowColors = Gradient::RainBow().MapColors;
         if (IsDoubleRainbow)
@@ -56,7 +56,8 @@ public:
 
 	virtual Image process(Image imageIn)
 	{
-        return blender.Blend(imageIn.clone(), gradientFx.process(imageIn));
+       Image clone = gradientFx.process(imageIn.clone());
+       return blender.Blend(imageIn, clone);
 	}
 };
 
