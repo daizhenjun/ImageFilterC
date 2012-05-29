@@ -86,6 +86,7 @@
     <ClInclude Include="ImageFilter\LensFlareFilter.h" />
     <ClInclude Include="ImageFilter\PosterizeFilter.h" />
     <ClInclude Include="ImageFilter\RaiseFrameFilter.h" />
+    <ClInclude Include="ImageFilter\SharpFilter.h" />
     <ClInclude Include="ImageFilter\ShiftFilter.h" />
     <ClInclude Include="ImageFilter\SoftGlowFilter.h" />
     <ClInclude Include="ImageFilter\SupernovaFilter.h" />

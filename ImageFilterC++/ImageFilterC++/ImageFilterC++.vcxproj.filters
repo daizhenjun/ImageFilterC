@@ -231,6 +231,9 @@
     <ClInclude Include="ImageFilter\PosterizeFilter.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="ImageFilter\SharpFilter.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">

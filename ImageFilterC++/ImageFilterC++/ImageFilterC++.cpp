@@ -76,6 +76,7 @@
 #include "ImageFilter\SupernovaFilter.h"
 #include "ImageFilter\LensFlareFilter.h"
 #include "ImageFilter\PosterizeFilter.h"
+#include "ImageFilter\SharpFilter.h"
 
 using namespace std;
 using namespace HaoRan_ImageFilter;
@@ -168,6 +169,7 @@ vector<IImageFilter*> LoadFilterVector(){
 	//vectorFilter.push_back(new LensFlareFilter());
 	//vectorFilter.push_back(new PosterizeFilter(2));
 	//vectorFilter.push_back(new GammaFilter(50));
+	vectorFilter.push_back(new SharpFilter());
 	return vectorFilter;
 }
 
