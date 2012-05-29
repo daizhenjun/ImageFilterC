@@ -75,6 +75,7 @@
 #include "ImageFilter\IllusionFilter.h"
 #include "ImageFilter\SupernovaFilter.h"
 #include "ImageFilter\LensFlareFilter.h"
+#include "ImageFilter\PosterizeFilter.h"
 
 using namespace std;
 using namespace HaoRan_ImageFilter;
@@ -91,48 +92,45 @@ void printDateTime()
 vector<IImageFilter*> LoadFilterVector(){
 	vector<IImageFilter*> vectorFilter;
 //v0.1
-	/*vectorFilter.push_back(new InvertFilter);
-	vectorFilter.push_back(new AutoLevelFilter(0.5));
-	vectorFilter.push_back(new RadialDistortionFilter());
-	vectorFilter.push_back(new BannerFilter(20, true));
-	vectorFilter.push_back(new BannerFilter(20, false));
-	vectorFilter.push_back(new BigBrotherFilter());
-	vectorFilter.push_back(new BlackWhiteFilter());
-	vectorFilter.push_back(new BrightContrastFilter());
-	vectorFilter.push_back(new ColorQuantizeFilter());
-	vectorFilter.push_back(new ConvolutionFilter());
-	vectorFilter.push_back(new BrickFilter());
-	vectorFilter.push_back(new BlockPrintFilter());
-	vectorFilter.push_back(new EdgeFilter());
-	vectorFilter.push_back(new FeatherFilter());
-	vectorFilter.push_back(new GaussianBlurFilter());
-	vectorFilter.push_back(new GradientFilter());
-	vectorFilter.push_back(new GradientMapFilter());
-	vectorFilter.push_back(new HistogramEqualFilter());
-	vectorFilter.push_back(new LightFilter());
-	vectorFilter.push_back(new MistFilter());
-	vectorFilter.push_back(new MonitorFilter());
-	vectorFilter.push_back(new MosaicFilter());
-	vectorFilter.push_back(new NeonFilter());
-	vectorFilter.push_back(new NightVisionFilter());
-	vectorFilter.push_back(new NoiseFilter());
-	vectorFilter.push_back(new OilPaintFilter());
-	vectorFilter.push_back(new OldPhotoFilter());
-	vectorFilter.push_back(new PixelateFilter());  
-	vectorFilter.push_back(new RainBowFilter());  
-	vectorFilter.push_back(new RectMatrixFilter());
-	vectorFilter.push_back(new ReflectionFilter(false));
-	vectorFilter.push_back(new ReflectionFilter(true));
-	vectorFilter.push_back(new ReliefFilter());
-	vectorFilter.push_back(new SaturationModifyFilter());
-	vectorFilter.push_back(new SepiaFilter());
-	vectorFilter.push_back(new SmashColorFilter());
-	vectorFilter.push_back(new ThresholdFilter());
-	vectorFilter.push_back(new TintFilter());
-	vectorFilter.push_back(new VignetteFilter());
-	vectorFilter.push_back(new VintageFilter());
-	vectorFilter.push_back(new WaterWaveFilter());
-	vectorFilter.push_back(new XRadiationFilter());*/
+	//vectorFilter.push_back(new InvertFilter);
+	//vectorFilter.push_back(new AutoLevelFilter(0.5));
+	//vectorFilter.push_back(new RadialDistortionFilter());
+	//vectorFilter.push_back(new BannerFilter(20, true));
+	//vectorFilter.push_back(new BannerFilter(20, false));
+	//vectorFilter.push_back(new BigBrotherFilter());
+	//vectorFilter.push_back(new BlackWhiteFilter());
+	//vectorFilter.push_back(new BrightContrastFilter());
+	//vectorFilter.push_back(new ColorQuantizeFilter());//8
+	//vectorFilter.push_back(new ConvolutionFilter());
+	//vectorFilter.push_back(new BrickFilter());
+	//vectorFilter.push_back(new BlockPrintFilter());
+	//vectorFilter.push_back(new EdgeFilter());
+	//vectorFilter.push_back(new FeatherFilter());
+	//vectorFilter.push_back(new GaussianBlurFilter());//vectorFilter.push_back(new GradientFilter());vectorFilter.push_back(new GradientMapFilter());vectorFilter.push_back(new HistogramEqualFilter());
+	//vectorFilter.push_back(new LightFilter());
+	//vectorFilter.push_back(new MistFilter());
+	//vectorFilter.push_back(new MonitorFilter());
+	//vectorFilter.push_back(new MosaicFilter());
+	//vectorFilter.push_back(new NeonFilter());
+	//vectorFilter.push_back(new NightVisionFilter());
+	//vectorFilter.push_back(new NoiseFilter());
+	//vectorFilter.push_back(new OilPaintFilter());
+	//vectorFilter.push_back(new OldPhotoFilter());
+	//vectorFilter.push_back(new PixelateFilter());  
+	//vectorFilter.push_back(new RainBowFilter());  
+	//vectorFilter.push_back(new RectMatrixFilter());
+	//vectorFilter.push_back(new ReflectionFilter(false));
+	//vectorFilter.push_back(new ReflectionFilter(true));
+	//vectorFilter.push_back(new ReliefFilter());
+	//vectorFilter.push_back(new SaturationModifyFilter());
+	//vectorFilter.push_back(new SepiaFilter());
+	//vectorFilter.push_back(new SmashColorFilter());
+	//vectorFilter.push_back(new ThresholdFilter());
+	//vectorFilter.push_back(new TintFilter());
+	//vectorFilter.push_back(new VignetteFilter());
+	//vectorFilter.push_back(new VintageFilter());
+	//vectorFilter.push_back(new WaterWaveFilter());
+	//vectorFilter.push_back(new XRadiationFilter());
 
 //v0.2
 	//vectorFilter.push_back(new LomoFilter());
@@ -149,26 +147,27 @@ vector<IImageFilter*> LoadFilterVector(){
 	//vectorFilter.push_back(new CleanGlassFilter());
 
 //v0.3
-	vectorFilter.push_back(new ZoomBlurFilter(30));
-	vectorFilter.push_back(new ThreeDGridFilter(16, 100));
-	vectorFilter.push_back(new ColorToneFilter(Color::rgb(254,168,33), 192));	
-	vectorFilter.push_back(new ColorToneFilter(0x00FF00, 192));	//green
-	vectorFilter.push_back(new ColorToneFilter(0x0000FF, 192));	//blue
-	vectorFilter.push_back(new ColorToneFilter(0xFFFF00, 192));	//yellow
-	vectorFilter.push_back(new SoftGlowFilter(10, 0.1, 0.1));	
-	vectorFilter.push_back(new TileReflectionFilter(20, 8));	
-	vectorFilter.push_back(new BlindFilter(true, 96, 100, Color::rgb(255,255,255)));	
-	vectorFilter.push_back(new BlindFilter(false, 96, 100, Color::rgb(0,0,0)));	
-	vectorFilter.push_back(new RaiseFrameFilter(20));	
-	vectorFilter.push_back(new ShiftFilter(10));	
-	vectorFilter.push_back(new WaveFilter(25, 10));	
-	vectorFilter.push_back(new BulgeFilter(-97));	
-	vectorFilter.push_back(new TwistFilter(27, 106));
-	vectorFilter.push_back(new RippleFilter(38, 15, true));
-	vectorFilter.push_back(new IllusionFilter(3));
-	vectorFilter.push_back(new SupernovaFilter(0xFFFF00,20,100));
-	vectorFilter.push_back(new LensFlareFilter());
-	;
+	//vectorFilter.push_back(new ZoomBlurFilter(30));
+	//vectorFilter.push_back(new ThreeDGridFilter(16, 100));
+	//vectorFilter.push_back(new ColorToneFilter(Color::rgb(254,168,33), 192));	
+	//vectorFilter.push_back(new ColorToneFilter(0x00FF00, 192));	//green
+	//vectorFilter.push_back(new ColorToneFilter(0x0000FF, 192));	//blue
+	//vectorFilter.push_back(new ColorToneFilter(0xFFFF00, 192));	//yellow
+	//vectorFilter.push_back(new SoftGlowFilter(10, 0.1, 0.1));	
+	//vectorFilter.push_back(new TileReflectionFilter(20, 8));	
+	//vectorFilter.push_back(new BlindFilter(true, 96, 100, Color::rgb(255,255,255)));	
+	//vectorFilter.push_back(new BlindFilter(false, 96, 100, Color::rgb(0,0,0)));	
+	//vectorFilter.push_back(new RaiseFrameFilter(20));	
+	//vectorFilter.push_back(new ShiftFilter(10));	
+	//vectorFilter.push_back(new WaveFilter(25, 10));	
+	//vectorFilter.push_back(new BulgeFilter(-97));	
+	//vectorFilter.push_back(new TwistFilter(27, 106));
+	//vectorFilter.push_back(new RippleFilter(38, 15, true));
+	//vectorFilter.push_back(new IllusionFilter(3));
+	//vectorFilter.push_back(new SupernovaFilter(0xFFFF00,20,100));
+	//vectorFilter.push_back(new LensFlareFilter());
+	//vectorFilter.push_back(new PosterizeFilter(2));
+	//vectorFilter.push_back(new GammaFilter(50));
 	return vectorFilter;
 }
 
