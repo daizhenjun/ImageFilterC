@@ -26,9 +26,13 @@ namespace HaoRan_ImageFilter{
 
 class SharpFilter : public IImageFilter{
 
+private:
+	int _step;
 public:
 
-	SharpFilter(){};
+	SharpFilter():_step(1) {};
+
+	SharpFilter(int step):_step(step) {};
 
 	virtual Image process(Image imageIn)
 	{
@@ -38,7 +42,7 @@ public:
 		imageIn.clearImage(0xffffff);
         
         //拉普拉斯模板
-        int Laplacian[9] ={ -1, -1, -1, -1, 9, -1, -1, -1, -1 };
+        int Laplacian[9] ={ -1, -1, -1, -1, 8 +_step, -1, -1, -1, -1 };
         for (int x = 1; x < width - 1; x++)
 		{
             for (int y = 1; y < height - 1; y++)
