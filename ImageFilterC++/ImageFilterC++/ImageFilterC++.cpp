@@ -136,13 +136,13 @@ vector<IImageFilter*> LoadFilterVector(){
 //v0.2
 	//vectorFilter.push_back(new LomoFilter());
 	//vectorFilter.push_back(new PaintBorderFilter(0x00FF00));//green
- //   vectorFilter.push_back(new PaintBorderFilter(0x0000FF));//blue
+    //vectorFilter.push_back(new PaintBorderFilter(0x0000FF));//blue
 	//vectorFilter.push_back(new PaintBorderFilter(0xFFFF00));//yellow
 	//vectorFilter.push_back(new SceneFilter(5.0f, Gradient::Scene()));
 	//vectorFilter.push_back(new SceneFilter(5.0f, Gradient::Scene1()));
 	//vectorFilter.push_back(new SceneFilter(5.0f, Gradient::Scene2()));
 	//vectorFilter.push_back(new SceneFilter(5.0f, Gradient::Scene3()));
- //   vectorFilter.push_back(new ComicFilter());
+    //vectorFilter.push_back(new ComicFilter());
 	//vectorFilter.push_back(new FilmFilter(80.0f));
 	//vectorFilter.push_back(new FocusFilter());
 	//vectorFilter.push_back(new CleanGlassFilter());
@@ -170,6 +170,7 @@ vector<IImageFilter*> LoadFilterVector(){
 	//vectorFilter.push_back(new PosterizeFilter(2));
 	//vectorFilter.push_back(new GammaFilter(50));
 	//vectorFilter.push_back(new SharpFilter());
+	//目前累计提供约73种效果
 	return vectorFilter;
 }
 
