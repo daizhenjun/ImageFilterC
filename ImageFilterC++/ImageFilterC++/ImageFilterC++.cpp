@@ -169,7 +169,7 @@ vector<IImageFilter*> LoadFilterVector(){
 	//vectorFilter.push_back(new LensFlareFilter());
 	//vectorFilter.push_back(new PosterizeFilter(2));
 	//vectorFilter.push_back(new GammaFilter(50));
-	vectorFilter.push_back(new SharpFilter());
+	//vectorFilter.push_back(new SharpFilter());
 	return vectorFilter;
 }
 
@@ -231,26 +231,16 @@ void SaveImage(Image image, NSString savePath) {
 
 int _tmain(int argc, _TCHAR* argv[])
 {
-	////加载图片
-	//Image image = LoadImage("d:\\4.jpg");
-	////开始处理图片
-	//vector<IImageFilter*>::iterator it;
-	//for(it=vectorFilter.begin(); it!=vectorFilter.end(); it++){    
-	//	image = (*it)->process(image);	
- //   }
-	//SaveImage(image, "d:\\15.jpg");
-	//return 0;
-
 	//开始处理图片
 	int i = 0;
 	vector<IImageFilter*>::iterator it;
-	char temp[64];
+	char filePath[64];
 	for(it=vectorFilter.begin(); it!=vectorFilter.end(); it++){    
 		//加载图片
 	    Image image = LoadImage("d:\\source.jpg");
 		image = (*it)->process(image);	
-		sprintf(temp, "d:\\filter\\%d.jpg", i);  
-		string filename(temp);
+		sprintf(filePath, "d:\\filter\\%d.jpg", i);  
+		string filename(filePath);
 #ifndef WIN32 //only for apple ios
 		image.copyPixelsFromBuffer();
 #endif

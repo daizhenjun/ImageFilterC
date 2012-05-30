@@ -69,7 +69,7 @@ public:
 
 						int   u = (fx + m_fcx + 32768) / 65536 ;
 						int   v = (fy + m_fcy + 32768) / 65536 ;
-						if (u>=0 && u<imageIn.getWidth() && v>=0 && v<imageIn.getHeight())
+						if (u>=0 && u<width && v>=0 && v<height)
 						{
 							sr += clone.getRComponent(u, v) * ta ;
 							sg += clone.getGComponent(u, v) * ta ;
