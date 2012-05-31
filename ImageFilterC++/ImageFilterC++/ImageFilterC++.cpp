@@ -101,7 +101,7 @@ vector<IImageFilter*> LoadFilterVector(){
 	//vectorFilter.push_back(new BigBrotherFilter());
 	//vectorFilter.push_back(new BlackWhiteFilter());
 	//vectorFilter.push_back(new BrightContrastFilter());
-	//vectorFilter.push_back(new ColorQuantizeFilter());//8
+	//vectorFilter.push_back(new ColorQuantizeFilter());
 	//vectorFilter.push_back(new ConvolutionFilter());
 	//vectorFilter.push_back(new BrickFilter());
 	//vectorFilter.push_back(new BlockPrintFilter());
@@ -148,28 +148,28 @@ vector<IImageFilter*> LoadFilterVector(){
 	//vectorFilter.push_back(new CleanGlassFilter());
 
 //v0.3
-	//vectorFilter.push_back(new ZoomBlurFilter(30));
-	//vectorFilter.push_back(new ThreeDGridFilter(16, 100));
-	//vectorFilter.push_back(new ColorToneFilter(Color::rgb(254,168,33), 192));	
-	//vectorFilter.push_back(new ColorToneFilter(0x00FF00, 192));	//green
-	//vectorFilter.push_back(new ColorToneFilter(0x0000FF, 192));	//blue
-	//vectorFilter.push_back(new ColorToneFilter(0xFFFF00, 192));	//yellow
-	//vectorFilter.push_back(new SoftGlowFilter(10, 0.1, 0.1));	
-	//vectorFilter.push_back(new TileReflectionFilter(20, 8));	
-	//vectorFilter.push_back(new BlindFilter(true, 96, 100, Color::rgb(255,255,255)));	
-	//vectorFilter.push_back(new BlindFilter(false, 96, 100, Color::rgb(0,0,0)));	
-	//vectorFilter.push_back(new RaiseFrameFilter(20));	
-	//vectorFilter.push_back(new ShiftFilter(10));	
-	//vectorFilter.push_back(new WaveFilter(25, 10));	
-	//vectorFilter.push_back(new BulgeFilter(-97));	
-	//vectorFilter.push_back(new TwistFilter(27, 106));
-	//vectorFilter.push_back(new RippleFilter(38, 15, true));
-	//vectorFilter.push_back(new IllusionFilter(3));
-	//vectorFilter.push_back(new SupernovaFilter(0xFFFF00,20,100));
-	//vectorFilter.push_back(new LensFlareFilter());
-	//vectorFilter.push_back(new PosterizeFilter(2));
-	//vectorFilter.push_back(new GammaFilter(50));
-	//vectorFilter.push_back(new SharpFilter());
+	vectorFilter.push_back(new ZoomBlurFilter(30));
+	vectorFilter.push_back(new ThreeDGridFilter(16, 100));
+	vectorFilter.push_back(new ColorToneFilter(Color::rgb(254,168,33), 192));	
+	vectorFilter.push_back(new ColorToneFilter(0x00FF00, 192));	//green
+	vectorFilter.push_back(new ColorToneFilter(0x0000FF, 192));	//blue
+	vectorFilter.push_back(new ColorToneFilter(0xFFFF00, 192));	//yellow
+	vectorFilter.push_back(new SoftGlowFilter(10, 0.1, 0.1));	
+	vectorFilter.push_back(new TileReflectionFilter(20, 8));	
+	vectorFilter.push_back(new BlindFilter(true, 50, 50, Color::rgb(255,255,255)));	
+	vectorFilter.push_back(new BlindFilter(false, 40, 80, Color::rgb(0,0,0)));	
+	vectorFilter.push_back(new RaiseFrameFilter(20));	
+	vectorFilter.push_back(new ShiftFilter(10));	
+	vectorFilter.push_back(new WaveFilter(25, 10));	
+	vectorFilter.push_back(new BulgeFilter(-97));	
+	vectorFilter.push_back(new TwistFilter(27, 106));
+	vectorFilter.push_back(new RippleFilter(38, 15, true));
+	vectorFilter.push_back(new IllusionFilter(3));
+	vectorFilter.push_back(new SupernovaFilter(0xFFFF00,20,100));
+	vectorFilter.push_back(new LensFlareFilter());
+	vectorFilter.push_back(new PosterizeFilter(2));
+	vectorFilter.push_back(new GammaFilter(50));
+	vectorFilter.push_back(new SharpFilter());
 	//目前累计提供约73种效果
 	return vectorFilter;
 }
