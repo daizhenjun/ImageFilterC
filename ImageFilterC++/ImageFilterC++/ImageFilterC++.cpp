@@ -77,6 +77,18 @@
 #include "ImageFilter\LensFlareFilter.h"
 #include "ImageFilter\PosterizeFilter.h"
 #include "ImageFilter\SharpFilter.h"
+#include "ImageFilter\VideoFilter.h"
+#include "ImageFilter\FillPatternFilter.h"
+#include "ImageFilter\MirrorFilter.h"
+#include "ImageFilter\YCBCrLinearFilter.h"
+#include "ImageFilter\Textures\TexturerFilter.h"
+#include "ImageFilter\Textures\CloudsTexture.h"
+#include "ImageFilter\Textures\LabyrinthTexture.h"
+#include "ImageFilter\Textures\MarbleTexture.h"
+#include "ImageFilter\Textures\TextileTexture.h"
+#include "ImageFilter\Textures\WoodTexture.h"
+#include "ImageFilter\HslModifyFilter.h"
+
 
 using namespace std;
 using namespace HaoRan_ImageFilter;
@@ -148,58 +160,64 @@ vector<IImageFilter*> LoadFilterVector(){
 	//vectorFilter.push_back(new CleanGlassFilter());
 
 //v0.3
-	vectorFilter.push_back(new ZoomBlurFilter(30));
-	vectorFilter.push_back(new ThreeDGridFilter(16, 100));
-	vectorFilter.push_back(new ColorToneFilter(Color::rgb(254,168,33), 192));	
-	vectorFilter.push_back(new ColorToneFilter(0x00FF00, 192));	//green
-	vectorFilter.push_back(new ColorToneFilter(0x0000FF, 192));	//blue
-	vectorFilter.push_back(new ColorToneFilter(0xFFFF00, 192));	//yellow
-	vectorFilter.push_back(new SoftGlowFilter(10, 0.1, 0.1));	
-	vectorFilter.push_back(new TileReflectionFilter(20, 8));	
-	vectorFilter.push_back(new BlindFilter(true, 50, 50, Color::rgb(255,255,255)));	
-	vectorFilter.push_back(new BlindFilter(false, 40, 80, Color::rgb(0,0,0)));	
-	vectorFilter.push_back(new RaiseFrameFilter(20));	
-	vectorFilter.push_back(new ShiftFilter(10));	
-	vectorFilter.push_back(new WaveFilter(25, 10));	
-	vectorFilter.push_back(new BulgeFilter(-97));	
-	vectorFilter.push_back(new TwistFilter(27, 106));
-	vectorFilter.push_back(new RippleFilter(38, 15, true));
-	vectorFilter.push_back(new IllusionFilter(3));
-	vectorFilter.push_back(new SupernovaFilter(0xFFFF00,20,100));
-	vectorFilter.push_back(new LensFlareFilter());
-	vectorFilter.push_back(new PosterizeFilter(2));
-	vectorFilter.push_back(new GammaFilter(50));
-	vectorFilter.push_back(new SharpFilter());
+	//vectorFilter.push_back(new ZoomBlurFilter(30));
+	//vectorFilter.push_back(new ThreeDGridFilter(16, 100));
+	//vectorFilter.push_back(new ColorToneFilter(Color::rgb(254,168,33), 192));	
+	//vectorFilter.push_back(new ColorToneFilter(0x00FF00, 192));	//green
+	//vectorFilter.push_back(new ColorToneFilter(0x0000FF, 192));	//blue
+	//vectorFilter.push_back(new ColorToneFilter(0xFFFF00, 192));	//yellow
+	//vectorFilter.push_back(new SoftGlowFilter(10, 0.1, 0.1));	
+	//vectorFilter.push_back(new TileReflectionFilter(20, 8));	
+	//vectorFilter.push_back(new BlindFilter(true, 50, 50, Color::rgb(255,255,255)));	
+	//vectorFilter.push_back(new BlindFilter(false, 40, 80, Color::rgb(0,0,0)));	
+	//vectorFilter.push_back(new RaiseFrameFilter(20));	
+	//vectorFilter.push_back(new ShiftFilter(10));	
+	//vectorFilter.push_back(new WaveFilter(25, 10));	
+	//vectorFilter.push_back(new BulgeFilter(-97));	
+	//vectorFilter.push_back(new TwistFilter(27, 106));
+	//vectorFilter.push_back(new RippleFilter(38, 15, true));
+	//vectorFilter.push_back(new IllusionFilter(3));
+	//vectorFilter.push_back(new SupernovaFilter(0xFFFF00,20,100));
+	//vectorFilter.push_back(new LensFlareFilter());
+	//vectorFilter.push_back(new PosterizeFilter(2));
+	//vectorFilter.push_back(new GammaFilter(50));
+	//vectorFilter.push_back(new SharpFilter());
 	//目前累计提供约73种效果
+
+//v0.4
+	/*vectorFilter.push_back(new VideoFilter(VideoFilter::VIDEO_STAGGERED));
+	vectorFilter.push_back(new VideoFilter(VideoFilter::VIDEO_TRIPED));
+	vectorFilter.push_back(new VideoFilter(VideoFilter::VIDEO_3X3));
+	vectorFilter.push_back(new VideoFilter(VideoFilter::VIDEO_DOTS));
+	vectorFilter.push_back(new TileReflectionFilter(20, 8, 45, 1));	
+	vectorFilter.push_back(new TileReflectionFilter(20, 8, 45, 2));	
+	vectorFilter.push_back(new FillPatternFilter("d:\\texture1.png"));
+	vectorFilter.push_back(new FillPatternFilter("d:\\texture2.png"));
+	vectorFilter.push_back(new MirrorFilter(true));
+	vectorFilter.push_back(new MirrorFilter(false));
+	vectorFilter.push_back(new YCBCrLinearFilter(new YCBCrLinearFilter::Range(-0.3f, 0.3f)));
+	vectorFilter.push_back(new YCBCrLinearFilter(new YCBCrLinearFilter::Range(-0.276f, 0.163f), new YCBCrLinearFilter::Range(-0.202f, 0.5f)));
+	vectorFilter.push_back(new TexturerFilter(new CloudsTexture(), 0.8, 0.8));
+	vectorFilter.push_back(new TexturerFilter(new LabyrinthTexture(), 0.8, 0.8));
+	vectorFilter.push_back(new TexturerFilter(new MarbleTexture(), 1.8, 0.8));
+	vectorFilter.push_back(new TexturerFilter(new TextileTexture(), 0.8, 0.8));
+	vectorFilter.push_back(new TexturerFilter(new WoodTexture(), 0.8, 0.8));*/
+	vectorFilter.push_back(new HslModifyFilter(20));
+	vectorFilter.push_back(new HslModifyFilter(60));
+	vectorFilter.push_back(new HslModifyFilter(80));
+	vectorFilter.push_back(new HslModifyFilter(100));
+	vectorFilter.push_back(new HslModifyFilter(150));
+	vectorFilter.push_back(new HslModifyFilter(200));
+	vectorFilter.push_back(new HslModifyFilter(250));
+	vectorFilter.push_back(new HslModifyFilter(300));
+          
 	return vectorFilter;
 }
 
 //加载各种滤镜
 vector<IImageFilter*> vectorFilter = LoadFilterVector();
 
-//加载图片
-#ifdef WIN32	
-Image LoadImage(string imagePath){
-	CImage *cimage = new CImage;
-	CString filePath((CString)imagePath.c_str());
-	HRESULT hresult = cimage->Load(filePath);
-	if(cimage->IsNull()){
-	   cout<<"文件不存在或有异常";
-	   return 0;
-	}
-	printDateTime();
-	Image image(cimage);
-	return image;
-}
-#else
-Image LoadImage(NSString imagePath){
-	UIImage *image = [UIImage imageNamed:@imagePath];
-	CGImage image = image.CGImage;
-	printDateTime();
-	Image image(cimage);
-	return image;
-}
-#endif
+
 
 #ifdef WIN32
 //保存图片
@@ -238,7 +256,8 @@ int _tmain(int argc, _TCHAR* argv[])
 	char filePath[64];
 	for(it=vectorFilter.begin(); it!=vectorFilter.end(); it++){    
 		//加载图片
-	    Image image = LoadImage("d:\\source.jpg");
+	    Image image = HaoRan_ImageFilter::Image::LoadImage("d:\\source.jpg");
+		printDateTime();
 		image = (*it)->process(image);	
 		sprintf(filePath, "d:\\filter\\%d.jpg", i);  
 		string filename(filePath);

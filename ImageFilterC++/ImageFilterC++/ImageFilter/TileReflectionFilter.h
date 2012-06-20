@@ -43,8 +43,15 @@ private:
 	const static int aasamples = 17;
     POINT_FLOAT   m_aapt[aasamples] ;
   
+	BYTE m_focusType;
+    const static int m_size = 24;
 	
 public:
+
+	TileReflectionFilter (int nSquareSize, int nCurvature)
+	{
+		TileReflectionFilter(nSquareSize, nCurvature, 45, 0);
+	}
 
 	/**
 		Constructor \n
@@ -52,7 +59,7 @@ public:
 		param 2 <= nSquareSize <= 200 \n
 		param -20 <= nCurvature <= 20
 	*/
-    TileReflectionFilter (int nSquareSize, int nCurvature, int nAngle=45)
+    TileReflectionFilter (int nSquareSize, int nCurvature, int nAngle, BYTE focusType)
     {
         nAngle = FClamp (nAngle, -45, 45) ;
         m_sin = sin (AngleToRadian(nAngle)) ;
@@ -60,7 +67,7 @@ public:
 
         nSquareSize = FClamp (nSquareSize, 2, 200) ;
         m_scale = LIB_PI / nSquareSize ;
-
+		m_focusType = focusType;
         nCurvature = FClamp (nCurvature, -20, 20) ;
         if (nCurvature == 0)
             nCurvature = 1 ;
@@ -83,8 +90,50 @@ public:
 		  int height = imageIn.getHeight();
 		  double hw = width / 2.0;
           double hh = imageIn.getHeight() / 2.0;
+
+		  int ratio = width > height ? height * 32768 / width : width * 32768 / height;
+    
+	      // Calculate center, min and max
+		  int cx = width >> 1;
+		  int cy = height >> 1;
+		  int max = cx * cx + cy * cy;
+		  int min = (int)(max * 0.5);
+		  int diff = max - min;
+
 		  for(int x = 0 ; x < width ; x++){
 			  for(int y = 0 ; y < height ; y++){
+				    if (m_focusType == 1)//ÍÖÔ²
+                    {
+                        // Calculate distance to center and adapt aspect ratio
+                        int dx = cx - x;
+                        int dy = cy - y;
+                        if (width > height)
+                        {
+                            dy = (dy * ratio) >> 14;
+                        }
+                        else
+                        {
+                            dx = (dx * ratio) >> 14;
+                        }
+                        int distSq = dx * dx + dy * dy;
+
+                        if (distSq <= min)
+                            continue;
+                    }
+                    else if (m_focusType == 2)//³¤·½¿ò
+                    {
+                        bool inarray = false;
+                        if ((x < m_size) && (y < height - x) && (y >= x))
+                            inarray = true; // left
+                        else if ((y < m_size) && (x < width - y) && (x >= y))
+                            inarray = true; // top
+                        else if ((x > width - m_size) && (y >= width - x) && (y < height + x - width))
+                            inarray = true; // right
+                        else if (y > height - m_size)
+                            inarray = true; // bottom
+                        if (!inarray)
+                            continue;
+                    }
 				    int i = x - hw;
 					int j = y - hh;
 					int b=0, g=0, r=0, a=0 ;
@@ -101,7 +150,7 @@ public:
 						u = m_cos * s - m_sin * t ;
 						v = m_sin * s + m_cos * t ;
             
-						int   xSample = (int)(hw + u) ;
+						int xSample = (int)(hw + u) ;
 						int ySample = (int)(hh + v) ;
 
 						xSample = FClamp (xSample, 0, width -1) ;

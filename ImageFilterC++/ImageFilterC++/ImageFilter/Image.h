@@ -342,6 +342,30 @@ public:
 #endif
 	}
 
+
+	//加载图片
+#ifdef WIN32	
+	static Image LoadImage(std::string imagePath){
+		CImage *cimage = new CImage;
+		CString filePath((CString)imagePath.c_str());
+		HRESULT hresult = cimage->Load(filePath);
+		if(cimage->IsNull()){
+		   std::cout<<"文件不存在或有异常";
+		   return 0;
+		}
+		Image image(cimage);
+		return image;
+	}
+#else
+	static Image LoadImage(NSString imagePath){
+		UIImage *image = [UIImage imageNamed:@imagePath];
+		CGImage image = image.CGImage;
+		printDateTime();
+		Image image(cimage);
+		return image;
+	}
+#endif
+
 };
 
 }// namespace HaoRan

@@ -51,6 +51,7 @@ public:
 	int R;
 	int G;
 	int B;
+	Color(){}
 
 	Color(int r, int g, int b) : R(r), G(g), B(b){}
 
