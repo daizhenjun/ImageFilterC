@@ -185,7 +185,7 @@ vector<IImageFilter*> LoadFilterVector(){
 	//目前累计提供约73种效果
 
 //v0.4
-	/*vectorFilter.push_back(new VideoFilter(VideoFilter::VIDEO_STAGGERED));
+	vectorFilter.push_back(new VideoFilter(VideoFilter::VIDEO_STAGGERED));
 	vectorFilter.push_back(new VideoFilter(VideoFilter::VIDEO_TRIPED));
 	vectorFilter.push_back(new VideoFilter(VideoFilter::VIDEO_3X3));
 	vectorFilter.push_back(new VideoFilter(VideoFilter::VIDEO_DOTS));
@@ -201,7 +201,7 @@ vector<IImageFilter*> LoadFilterVector(){
 	vectorFilter.push_back(new TexturerFilter(new LabyrinthTexture(), 0.8, 0.8));
 	vectorFilter.push_back(new TexturerFilter(new MarbleTexture(), 1.8, 0.8));
 	vectorFilter.push_back(new TexturerFilter(new TextileTexture(), 0.8, 0.8));
-	vectorFilter.push_back(new TexturerFilter(new WoodTexture(), 0.8, 0.8));*/
+	vectorFilter.push_back(new TexturerFilter(new WoodTexture(), 0.8, 0.8));
 	vectorFilter.push_back(new HslModifyFilter(20));
 	vectorFilter.push_back(new HslModifyFilter(60));
 	vectorFilter.push_back(new HslModifyFilter(80));

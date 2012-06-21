@@ -27,29 +27,45 @@ namespace HaoRan_ImageFilter{
 class FillPatternFilter : public IImageFilter{
 private:
 	Image pattern;
+	float m_Mixture;
 public:
 
 	FillPatternFilter(std::string path)
 	{
 		pattern = HaoRan_ImageFilter::Image::LoadImage(path);
+		m_Mixture = 0.2f;
+	};
+
+	FillPatternFilter(std::string path, float mixture)
+	{
+		pattern = HaoRan_ImageFilter::Image::LoadImage(path);
+		m_Mixture = mixture;
 	};
 
 	virtual Image process(Image imageIn)
 	{
-		int r, g, b;
-		for (int x = 0; x < imageIn.getWidth(); x++)
-		{
-			for (int y = 0; y < imageIn.getHeight(); y++)
-			{
-				int xx = x % pattern.getWidth();
-				int yy = y % pattern.getHeight();
+		int mix1 = (int) (m_Mixture * 255);
+	    int mix2 = 255 - mix1;
+        int r, g, b, r1, g1, b1;
+        for (int x = 0; x < imageIn.getWidth(); x++)
+        {
+            for (int y = 0; y < imageIn.getHeight(); y++)
+            {
+                int xx = x % pattern.getWidth();
+                int yy = y % pattern.getHeight();
 
-				r = imageIn.getRComponent(x, y) + pattern.getRComponent(xx, yy);
-				g = imageIn.getGComponent(x, y) + pattern.getGComponent(xx, yy);
-				b = imageIn.getBComponent(x, y) + pattern.getBComponent(xx, yy);
-				imageIn.setPixelColor(x, y, SAFECOLOR(r), SAFECOLOR(g), SAFECOLOR(b));
-			}
-		}
+                r = imageIn.getRComponent(x, y);
+                g = imageIn.getGComponent(x, y);
+                b = imageIn.getBComponent(x, y); 
+                r1 = SAFECOLOR(r + pattern.getRComponent(xx, yy));
+                g1 = SAFECOLOR(g + pattern.getGComponent(xx, yy));
+                b1 = SAFECOLOR(b + pattern.getBComponent(xx, yy));
+                r = (r * mix2) + (r1 * mix1);
+		        g = (g * mix2) + (g1 * mix1);
+		        b = (b * mix2) + (b1 * mix1); 
+		        imageIn.setPixelColor(x, y, r >> 8, g >> 8, b >> 8);
+           }
+        }
 #ifndef WIN32 //only for apple ios
 		imageIn.copyPixelsFromBuffer();
 #endif
