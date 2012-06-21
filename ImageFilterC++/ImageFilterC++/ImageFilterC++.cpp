@@ -203,6 +203,7 @@ vector<IImageFilter*> LoadFilterVector(){
 	vectorFilter.push_back(new TexturerFilter(new TextileTexture(), 0.8, 0.8));
 	vectorFilter.push_back(new TexturerFilter(new WoodTexture(), 0.8, 0.8));
 	vectorFilter.push_back(new HslModifyFilter(20));
+	vectorFilter.push_back(new HslModifyFilter(40));
 	vectorFilter.push_back(new HslModifyFilter(60));
 	vectorFilter.push_back(new HslModifyFilter(80));
 	vectorFilter.push_back(new HslModifyFilter(100));
