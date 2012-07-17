@@ -1,4 +1,4 @@
 ImageFilterC
 ============
 
-ImageFilterC++ For vs2010 , iphone, ipad
+ImageFilterC++ For vs2010
